@@ -129,11 +129,11 @@ namespace TekTrackingCore.Services
             return await Task.FromResult(userInfo);
         }
 
-        async public void Proceed()
+
+        async public Task Proceed()
         {
             await Shell.Current.GoToAsync("dashboard");
         }
-
 
 
 

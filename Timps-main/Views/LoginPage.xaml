@@ -2,77 +2,77 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TekTrackingCore.Views.LoginPage"
+              BackgroundColor="Grey"
              >
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout
+        x:Name="vLayout"
+        Spacing="30"
+        Padding="10, 0"
+        Margin="0 ,30,0,0"
+        
+      
+ 
+        >
+            <!--<Image Source="logoone.png" Margin="0,0,0,0 " WidthRequest="120" />
+        <Image Source="logotwo.png" Margin="0,-15,0,0 " WidthRequest="120"/>-->
 
-            <Image Source="tek_logo.png" Aspect="AspectFill" Scale="0.75" Margin="0,0,0,0"></Image>
-
-            <Frame BorderColor="Beige"
-       
-       MaximumHeightRequest="60"
-             HorizontalOptions="FillAndExpand"
-              
-       >
-                <Frame.Background>
-
-                    <LinearGradientBrush EndPoint="1,0">
-
-                        <GradientStop Color="GreenYellow"
-                          Offset="0.01" />
-                        <GradientStop Color="Green"
-                          Offset="0.50" />
-                        <GradientStop Color="GreenYellow"
-                          Offset="0.01" />
-
-                    </LinearGradientBrush>
-                </Frame.Background>
-                <Image Source="logo_timps.png"   Aspect="AspectFit" ></Image>
-            </Frame>
+            <Image Source="teklogo.png"  WidthRequest="250"/>
+            <VerticalStackLayout Spacing="5">
+                <Label Text="Welcome" FontSize="28" TextColor="Black" HorizontalTextAlignment="Center"/>
+                <Label FontFamily="Poppins" Text="Track Inspection ,Maintenance and Planning Sysytem " FontSize="22" TextColor="Black" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
 
 
 
 
-            <Label 
-            Text="Ontario North Land"
-            VerticalOptions="Center" 
-            FontSize="Default"
-            HorizontalOptions="Center" />
-            <Label 
-            Text="Track Inspection, Maintenance and Planning System"
-            FlowDirection="MatchParent"
-            VerticalOptions="CenterAndExpand" 
-            Scale="0.90"
-            FontSize="11"            
-            HorizontalOptions="Center" />
-            <Frame BorderColor="White"
-       HasShadow="False"
-       CornerRadius="0"
-             HorizontalOptions="CenterAndExpand"
-              >
-                <Image  Source="login_screen_image.jpg"  Aspect="AspectFill" MaximumWidthRequest="150"></Image>
-            </Frame>
-
-            <Grid RowDefinitions="5*,25*,2*" Margin="20" ColumnDefinitions="50*,50*">
-                <Frame BackgroundColor="{StaticResource LoginBackGroundEmail}" Padding="5"  CornerRadius="12"  Grid.ColumnSpan="2">
-                    <VerticalStackLayout Grid.Row="0">
-                        <Frame HasShadow="True"  Margin="15,10" CornerRadius="12"  Padding="6,2">
-                            <Entry Background="Transparent" TextColor="Black" Placeholder="joe@example.com"  Text="{Binding Email}"></Entry>
-                        </Frame>
-                        <Frame HasShadow="True"  Margin="15,10"  CornerRadius="12" Padding="6,2" >
-                            <Entry Background="Transparent" Placeholder="*******" IsPassword="True" Text="{Binding Password}" ></Entry>
-                        </Frame>
-                    </VerticalStackLayout>
+            <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsLoggedIn}">
+                <Frame ZIndex="1" BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
+                    <Image Source="envelopesimple.png" HeightRequest="30" WidthRequest="30"/>
                 </Frame>
 
-                <Grid Grid.Row="1" Grid.ColumnSpan="2" RowDefinitions="25*,25*" ColumnDefinitions="50*,50*">
-                    <Button  TextColor="White"   Command="{Binding LoginCommand}" Text="Login"  Margin="10"  Grid.Row="0" Grid.ColumnSpan="2"  ></Button>
-                    <Button  TextColor="White"   Command="{Binding LoginCommand}" Text="Proceed"  Margin="10"  Grid.Row="1" Grid.Column="0" ></Button>
-                    <Button  TextColor="White"   Command="{Binding LoginCommand}" Text="Settings" Margin="10"  Grid.Row="1" Grid.Column="1"></Button>
+                <Frame Padding="0" Margin="20,0,0,0" HasShadow="True" HeightRequest="45" CornerRadius="20" BorderColor="Black" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email" TextColor="Black" FontSize="Large" Text="{Binding Email}" />
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsLoggedIn}">
+                <Frame ZIndex="1" BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
+                    <Image Source="lockkey.png" HeightRequest="30" WidthRequest="30" />
+                </Frame>
 
 
-                </Grid>
-            </Grid>
+                <Frame Padding="0" Margin="20,0,0,0" HasShadow="True" HeightRequest="45" CornerRadius="20" BorderColor="Black" HorizontalOptions="FillAndExpand">
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" Keyboard="Email" TextColor="Black" FontSize="Large" IsPassword="True" Text="{Binding Password}"/>
+                </Frame>
+            </StackLayout>
+
+
+            <StackLayout HorizontalOptions="Fill">
+                <Button Text="{Binding BtnTextString}"   Command="{Binding LoginCommand}"  BackgroundColor="#191970" FontSize="Large" TextColor="White"  CornerRadius="0" />
+            </StackLayout>
+
+
+            <!--<StackLayout Orientation="Horizontal">
+            <Label  FontSize="20"  Text="Dont have Account?"/>
+        </StackLayout>-->
+
+            <FlexLayout JustifyContent="Center" AlignItems="Center" Margin="0,0,0,5" IsVisible="{Binding IsLoggedOut}" >
+
+                <Button BackgroundColor="#191970" TextColor="White" Text="Proceed" Command="{Binding Proceed}"  HeightRequest="40" WidthRequest="150" CornerRadius="0" Margin="5,0,5,0"/>
+                <Button BackgroundColor="#191970" TextColor="White" Text="Log Out"  HeightRequest="40"  WidthRequest="150" CornerRadius="0"  Margin="5,0,5,0"/>
+            </FlexLayout>
+            <FlexLayout JustifyContent="Center" AlignItems="Center" Margin="0,5,0,5" >
+
+                <Button BackgroundColor="#191970" TextColor="White" Text="Settings" WidthRequest="150"  HeightRequest="40" CornerRadius="0" Margin="5,0,5,0"/>
+                <Button BackgroundColor="#191970" TextColor="White" Text="Language" WidthRequest="150"  HeightRequest="40" CornerRadius="0"  Margin="5,0,5,0"/>
+            </FlexLayout>
+
+
+
+
+            <Image Source="eutility.png"  WidthRequest="250" Margin="0,20,0,0"/>
+
 
         </VerticalStackLayout>
     </ScrollView>

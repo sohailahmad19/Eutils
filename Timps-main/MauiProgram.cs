@@ -17,6 +17,8 @@ public static class MauiProgram
 			});
 
 
+        //Routing.RegisterRoute("dashboard", typeof(MainPage));
+        //Routing.RegisterRoute("login", typeof(LoginPage));
 
         builder.Services.AddSingleton<LoginViewModel>();
         builder.Services.AddSingleton<LoginPage>();
