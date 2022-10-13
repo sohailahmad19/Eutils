@@ -57,11 +57,13 @@
             <Label  FontSize="20"  Text="Dont have Account?"/>
         </StackLayout>-->
 
-            <FlexLayout JustifyContent="Center" AlignItems="Center" Margin="0,0,0,5" IsVisible="{Binding IsLoggedOut}" >
-
-                <Button BackgroundColor="#191970" TextColor="White" Text="Proceed" Command="{Binding Proceed}"  HeightRequest="40" WidthRequest="150" CornerRadius="0" Margin="5,0,5,0"/>
-                <Button BackgroundColor="#191970" TextColor="White" Text="Log Out"  HeightRequest="40"  WidthRequest="150" CornerRadius="0"  Margin="5,0,5,0"/>
-            </FlexLayout>
+           
+                <StackLayout HorizontalOptions="Fill" IsVisible="{Binding IsLoggedOut}"  Margin="0,0,0,5">
+                <Button BackgroundColor="#191970" TextColor="White" Text="Proceed" Command="{Binding ProceedCommand}" FontSize="Large"   CornerRadius="0" Margin="5,0,5,0"/>
+                </StackLayout>
+                <!--<Button BackgroundColor="#191970" TextColor="White" Text="Log Out"  HeightRequest="40"  WidthRequest="150" CornerRadius="0"  Margin="5,0,5,0"/>-->
+     
+            
             <FlexLayout JustifyContent="Center" AlignItems="Center" Margin="0,5,0,5" >
 
                 <Button BackgroundColor="#191970" TextColor="White" Text="Settings" WidthRequest="150"  HeightRequest="40" CornerRadius="0" Margin="5,0,5,0"/>

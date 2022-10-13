@@ -10,6 +10,7 @@ using TekTrackingCore.Repositry;
 using TekTrackingCore.Models;
 using Newtonsoft.Json;
 using TekTrackingCore.Model;
+using TekTrackingCore.Views;
 
 namespace TekTrackingCore.Services
 {
@@ -41,9 +42,9 @@ namespace TekTrackingCore.Services
                  userinfo = new UserInfo();
                 var httpclient = new HttpClient();
                 //string url = Globals.wsBaseURL + "/login/";
-                string url = "http://172.19.91.167:4001/api/login/";
+                string url = "http://172.19.91.167:4010/api/login/";
 
-                string userloginjson = @"{ ""user"":{ ""email"":""medmonds@tektracking.com"",""password"":""welcome""}}";
+                //string userloginjson = @"{ ""user"":{ ""email"":""medmonds@tektracking.com"",""password"":""welcome""}}";
                 LoginRequest request = new LoginRequest();
                 request.user.email = username;
                 request.user.password = password;
@@ -57,28 +58,30 @@ namespace TekTrackingCore.Services
                 {
                     string serialized = await response.Content.ReadAsStringAsync();
 
-                    var userinfolist = LoginInfo.FromJson(serialized);
+                    //var userinfolist = LoginInfo.FromJson(serialized);
 
                     Preferences.Set(typeof(LoginInfo).ToString(), serialized);
 
+                    System.Diagnostics.Debug.WriteLine(Preferences.Get(typeof(LoginInfo).ToString(),""));
 
-                    userinfo.UserName = userinfolist.Result.Name;
-                    userinfo.UserId = userinfolist.Result.Id;
-                    userinfo.Token = userinfolist.Token;
+
+                    //userinfo.UserName = userinfolist.Result.Name;
+                    //userinfo.UserId = userinfolist.Result.Id;
+                    //userinfo.Token = userinfolist.Token;
 
                     return await Task.FromResult(userinfo);
 
 
                 }
                 else
-                {
+         {
 
                     return null;
                 }
             }
             catch (Exception ex)
             {
-                //Log ex
+                System.Diagnostics.Debug.WriteLine(ex);
             }
             finally
             {
@@ -132,7 +135,8 @@ namespace TekTrackingCore.Services
 
         async public Task Proceed()
         {
-            await Shell.Current.GoToAsync("dashboard");
+            //await Shell.Current.GoToAsync("/dashboard");
+            await Shell.Current.GoToAsync($"//{nameof(Briefing)}");
         }
 
 

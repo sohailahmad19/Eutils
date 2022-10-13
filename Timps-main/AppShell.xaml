@@ -4,16 +4,46 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TekTrackingCore.Views"
-    Shell.FlyoutBehavior="Disabled">
+   >
 
-    <ShellContent
-       
+    <!--<TabBar Shell.BackgroundColor="#191970" Shell.NavBarHasShadow="True"     Shell.TabBarBackgroundColor="#191970" Shell.TabBarTitleColor="Gray" Shell.TabBarUnselectedColor="White">
+        <ShellContent
+       Title="Dashboard"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="LoginPage" />
 
-    <!--<ShellContent Title="Dashboard"
+    <ShellContent Title="Dashboard"
                      Icon="hos.png"
                       Route="dashboard"
-                     ContentTemplate="{DataTemplate local:MainPage}" />-->
+                     ContentTemplate="{DataTemplate local:MainPage}" />
+    </TabBar>-->
+
+    <ShellContent
+       FlyoutItemIsVisible="False"
+        Title="Login"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="login"/>
+
+    <FlyoutItem   Title="Briefing"  Icon="breifing.png"  >
+        <ShellContent
+            Route="Briefing" 
+            Icon="hos.png"
+            Title="Briefing"
+            ContentTemplate="{DataTemplate local:Briefing}"/>
+    </FlyoutItem>
+
+    <FlyoutItem   Title="HOS"  Icon="hos.png"  >
+        <ShellContent
+            Route="Hos" 
+            Icon="hos.png"
+            Title="HOS"
+            ContentTemplate="{DataTemplate local:Hos}"/>
+    </FlyoutItem>
+
+  
+    <!--<FlyoutItem  Title="HOS" Icon="breifing.png">
+        <ShellContent  Route="MainPage" Title="home" ContentTemplate="{DataTemplate local:MainPage}"/>
+    </FlyoutItem>-->
+
 
 </Shell>

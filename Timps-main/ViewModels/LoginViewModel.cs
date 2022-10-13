@@ -27,27 +27,35 @@ namespace TekTrackingCore.ViewModels
         [ObservableProperty]
         private string password;
 
-        [RelayCommand]
-        async Task Login() 
-        {
+        //[RelayCommand]
+        //async Task Login() 
+        //{
          
-           UserInfo info = await loginRepository.Login(email, password); 
-            if(info == null) 
-            {
+        //   UserInfo info = await loginRepository.Login(email, password); 
+        //    if(info == null) 
+        //    {
 
-            }
-            else 
-            { // Route to DashBoard.
+        //    }
+        //    else 
+        //    { // Route to DashBoard.
                 
-            }
+        //    }
         
-        }
+        //}
 
         public bool IsLoggedIn
         {
             get
             {
                 return loginRepository.IsAlreadyLoggedIn();
+            }
+        }
+
+        public bool IsLoggedOut
+        {
+            get
+            {
+                return !loginRepository.IsAlreadyLoggedIn();
             }
         }
 
@@ -59,12 +67,24 @@ namespace TekTrackingCore.ViewModels
             }
         }
 
-        public bool IsLoggedOut
+    
+
+        [RelayCommand]
+        async Task<Task> Login()
         {
-            get
+
+            if (!IsLoggedIn)
             {
-                return !loginRepository.IsAlreadyLoggedIn();
+
+                return loginRepository.Logout();
+
             }
+
+            else
+            {
+                return loginRepository.Login(email, password);
+            }
+
         }
 
 

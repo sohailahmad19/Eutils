@@ -17,11 +17,14 @@ public static class MauiProgram
 			});
 
 
-        //Routing.RegisterRoute("dashboard", typeof(MainPage));
-        //Routing.RegisterRoute("login", typeof(LoginPage));
+		//Routing.RegisterRoute("dashboard", typeof(MainPage));
+		//Routing.RegisterRoute("login", typeof(LoginPage));
 
-        builder.Services.AddSingleton<LoginViewModel>();
+		builder.Services.AddSingleton<LoginViewModel>();
         builder.Services.AddSingleton<LoginPage>();
+
+        builder.Services.AddSingleton<MianPageViewModel>();
+        builder.Services.AddSingleton<MainPage>();
 
 
         return builder.Build();
