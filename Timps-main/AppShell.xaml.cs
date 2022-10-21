@@ -11,5 +11,6 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(Hos), typeof(Hos));
 
+
     }
 }

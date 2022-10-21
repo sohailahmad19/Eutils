@@ -1,39 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TekTrackingCore.Views.MainPage">
+             xmlns:localization="clr-namespace:TekTrackingCore.Resources.Localization"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="TekTrackingCore.MainPage"
+             Title="{localization:Translate MainPageTitle}">
+ 
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+			Spacing="25"
+			Padding="30,0"
+			VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+          
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+            <Label Text ="Static resource. Updates on App restart."/>
+            <Label Text="{x:Static localization:AppResources.MainPageTitle}" />
 
-            <Label
-                Text="{Binding Title}"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+            <Label Text ="Resource updated dynamically, thanks to Binding. No restart needed."
+			      />
+            <Label Text="{Binding LocalizationResourceManager[Intro], Mode=OneWay}" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-              
-                HorizontalOptions="Center" />
+            <Label Text ="The same as above, but using MarkupExtension"
+			     />
+            <Label Text="{localization:Translate Intro}" />
+
+            <Picker x:Name="LanguagePicker"
+					SelectedIndexChanged="LanguageChanged"
+			        HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>

@@ -56,7 +56,7 @@
                         <Image  WidthRequest="33" Source="inspection.png"/>
                         <Label FontAttributes="Bold" Text="Sessions" Margin="0,5,0,0"/>
                     </HorizontalStackLayout>
-                    <Label  Text="0"
+                    <Label  Text="{Binding Reported}"
                       FontSize="22"  />
                 </FlexLayout>
             </Frame>
@@ -66,7 +66,7 @@
                         <Image  WidthRequest="30" Source="report.png"/>
                         <Label FontAttributes="Bold" Text="Reported" Margin="0,5,0,0"/>
                     </HorizontalStackLayout>
-                    <Label  Text="0"
+                    <Label  Text="{Binding Session}"
                       FontSize="22"  />
                 </FlexLayout>
             </Frame>
@@ -78,7 +78,7 @@
               
                 <Label Margin="3,0,0,0"  FontSize="22"  Text="Time recorded"/>
             </FlexLayout>
-            <Label   HorizontalOptions="Center" Text="00 h 00 m" Margin="4,5,0,0"/>
+            <Label   HorizontalOptions="Center" Text="{Binding Times}" Margin="4,5,0,0"/>
         </StackLayout>
 
 

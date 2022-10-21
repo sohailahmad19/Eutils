@@ -1,4 +1,6 @@
-﻿namespace TekTrackingCore;
+﻿using TekTrackingCore.Views;
+
+namespace TekTrackingCore;
 
 public partial class App : Application
 {
@@ -6,6 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		//MainPage = new AppShell();
+		MainPage = new MainPage();
 	}
 }
