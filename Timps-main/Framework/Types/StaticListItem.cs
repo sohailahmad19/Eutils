@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace TekTrackingCore.Framework.Types
 {
-    [Table("applicationlookups")]
+    [Table("applicationlookups")] 
     public class StaticListItem
     {
         
@@ -19,19 +20,8 @@ namespace TekTrackingCore.Framework.Types
         public string optParam1 { get; set; }
         public string optParam2 { get; set; }
 
-        internal string getDescription()
-        {
-            return description;
-        }
-
-        internal string getOptParam1()
-        {
-            return optParam1;
-        }
-
-        internal string getOptParam2()
-        {
-            return optParam2;
-        }
+      
     }
+
+
 }

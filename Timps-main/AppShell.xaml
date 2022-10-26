@@ -40,9 +40,17 @@
             ContentTemplate="{DataTemplate local:Hos}"/>
     </FlyoutItem>
 
-    
-    
-  
+    <FlyoutItem   Title="HOS"  Icon="hos.png"  >
+        <ShellContent
+            Route="SelectRun" 
+            Icon="hos.png"
+            Title="Select Run"
+            ContentTemplate="{DataTemplate local:StaticListItemPage}"/>
+    </FlyoutItem>
+
+
+
+
     <!--<FlyoutItem  Title="HOS" Icon="breifing.png">
         <ShellContent  Route="MainPage" Title="home" ContentTemplate="{DataTemplate local:MainPage}"/>
     </FlyoutItem>-->

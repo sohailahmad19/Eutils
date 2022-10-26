@@ -10,6 +10,7 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(Briefing), typeof(Briefing));
 
         Routing.RegisterRoute(nameof(Hos), typeof(Hos));
+        Routing.RegisterRoute(nameof(StaticListItemPage), typeof(StaticListItemPage));
 
 
     }

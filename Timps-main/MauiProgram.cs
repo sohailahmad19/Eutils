@@ -1,11 +1,19 @@
-﻿using TekTrackingCore.ViewModels;
+﻿using TekTrackingCore.Framework;
+using TekTrackingCore.ViewModels;
 using TekTrackingCore.Views;
+using TekTrackingCore.Services;
+
+
 
 namespace TekTrackingCore;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
+    public static void UseResolver(this IServiceProvider sp)
+    {
+        ServiceResolver.RegisterServiceProvider(sp);
+    }
+    public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
@@ -28,8 +36,27 @@ public static class MauiProgram
 		builder.Services.AddSingleton<BriefingViewModel>();
         builder.Services.AddSingleton<Briefing>();
 
+        builder.Services.AddSingleton<StaticListItemViewModel>();
+        builder.Services.AddSingleton<StaticListItemPage>();
+
+        builder.Services.AddSingleton<JSONWebService>();
+        builder.Services.AddSingleton<DatabaseSyncService>();
+
+        builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
 
 
-        return builder.Build();
-	}
+        MauiApp app = builder.Build();
+        app.Services.UseResolver();
+
+
+        return app;
+    }
+
+    public static void SetMainDashboardPage()
+    {
+        App.Current.MainPage = new AppShell();
+
+
+    }
 }
+

@@ -42,7 +42,7 @@ namespace TekTrackingCore.Services
                  userinfo = new UserInfo();
                 var httpclient = new HttpClient();
                 //string url = Globals.wsBaseURL + "/login/";
-                string url = "http://172.19.91.167:4010/api/login/";
+                string url = "http://172.19.91.167:4001/api/login/";
 
                 //string userloginjson = @"{ ""user"":{ ""email"":""medmonds@tektracking.com"",""password"":""welcome""}}";
                 LoginRequest request = new LoginRequest();
