@@ -39,7 +39,7 @@ namespace TekTrackingCore.Services
             UserInfo userinfo;
             try
             {
-                 userinfo = new UserInfo();
+                userinfo = new UserInfo();
                 var httpclient = new HttpClient();
                 //string url = Globals.wsBaseURL + "/login/";
                 string url = "http://172.19.91.167:4001/api/login/";
@@ -57,17 +57,26 @@ namespace TekTrackingCore.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string serialized = await response.Content.ReadAsStringAsync();
-
-                    //var userinfolist = LoginInfo.FromJson(serialized);
+                System.Diagnostics.Debug.WriteLine(serialized, "serialized.............................................................");
+                //Console.WriteLine(serialized, "serialized");
+              
+                var userinfolist = LoginInfo.FromJson(serialized);
+                Console.WriteLine( "userinfolist");
 
                     Preferences.Set(typeof(LoginInfo).ToString(), serialized);
 
-                    System.Diagnostics.Debug.WriteLine(Preferences.Get(typeof(LoginInfo).ToString(),""));
 
 
-                    //userinfo.UserName = userinfolist.Result.Name;
-                    //userinfo.UserId = userinfolist.Result.Id;
-                    //userinfo.Token = userinfolist.Token;
+
+                    userinfo.UserName = userinfolist.Result.Name;
+                    userinfo.UserId = userinfolist.Result.Id;
+                    userinfo.Token = userinfolist.Token;
+                    Preferences.Set(AppConstants.TOKEN_KEY, userinfo.Token);
+                    Preferences.Set(AppConstants.USER_DETAILS, serialized);
+                    //System.Diagnostics.Debug.WriteLine(Preferences.Get(typeof(AppConstants.TOKEN_KEY).ToString(), ""));
+                    System.Diagnostics.Debug.WriteLine(userinfolist,"userinfo list");
+
+                    App.CurrentUserDetails = userinfolist;
 
                     return await Task.FromResult(userinfo);
 
@@ -78,16 +87,16 @@ namespace TekTrackingCore.Services
 
                     return null;
                 }
-            }
+        }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine(ex,"login exception");
             }
-            finally
-            {
-                //done
-                
-            }
+            //finally
+            //{
+            //    //done
+
+            //}
             return null;
         }
 

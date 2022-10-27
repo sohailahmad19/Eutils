@@ -43,7 +43,7 @@ namespace TekTrackingCore.ViewModels
         {
             service = ServiceResolver.ServiceProvider.GetRequiredService<DatabaseSyncService>();
             staticListItemsList = new ExtendedObservableCollection<StaticListItemDTO1>();
-            staticListItemsList.Add(new StaticListItemDTO1{ Code="666",Description="555",ListName="444",OptParam1="3333",OptParam2="33",TenantId="123"});
+            //staticListItemsList.Add(new StaticListItemDTO1{ Code="666",Description="555",ListName="444",OptParam1="3333",OptParam2="33",TenantId="123"});
 
 
             service.SetSyncCallback = onSyncCallback;
@@ -55,10 +55,31 @@ namespace TekTrackingCore.ViewModels
 
         public void onSyncCallback() 
         {
-            var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "WorkPlanTemplate"));
-            StaticListItemsList.Execute(items => { items.Clear(); items.AddRange(filterdlist).Take(100); });
-            
-        
+            var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "WorkPlanTemplate").Take(100));
+            Console.WriteLine(filterdlist.ToString(), "filteredlist");
+
+
+            //StaticListItemsList.Execute(items => { items.Clear(); items.AddRange(filterdlist); });
+
+            if (filterdlist.Count() == 1)
+            {
+                var staticlistitem = filterdlist.FirstOrDefault();
+                if (staticlistitem.Code != "-1")
+                {
+                    StaticListItemsList.Add(filterdlist.FirstOrDefault());
+                }
+            }
+            else
+            {
+                StaticListItemsList.Execute(items =>
+                {
+                    //items.Clear(); 
+                    items.AddRange(filterdlist);
+                });
+
+            }
+
+
         }
 
     }

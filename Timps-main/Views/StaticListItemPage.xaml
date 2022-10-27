@@ -6,8 +6,9 @@
              Title="StaticListItemView">
     <ScrollView>
     <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding StaticListItemsList}">
-            <!--<CollectionView.ItemsSource>
+
+            <CollectionView ItemsSource="{Binding StaticListItemsList} " RemainingItemsThreshold="10" RemainingItemsThresholdReachedCommand="{Binding RemainingItems}">
+                <!--<CollectionView.ItemsSource>
                 <x:Array Type="{x:Type z:StaticListItemDTO1}">
                     <z:StaticListItemDTO1 ListName="Save" Code="123" OptParam1="A123A" OptParam2="ASAD"/>
                     <z:StaticListItemDTO1 ListName="Raggued" Code="23" OptParam1="A123A" OptParam2="ASAD"/>
@@ -16,19 +17,23 @@
                  
                 </x:Array>
             </CollectionView.ItemsSource>-->
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="z:StaticListItemDTO1">
-                    <Grid ColumnDefinitions="100,40,Auto,Auto,*">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="z:StaticListItemDTO1">
+                        <Frame CornerRadius="20" BackgroundColor="Beige" Margin="2">
+                            <Grid ColumnDefinitions="Auto,Auto, *" RowDefinitions="Auto,*" Margin="10">
 
-                        <Label Grid.Column="0" Text="{Binding ListName}" FontAttributes="Bold" />
-                        <Label Grid.Column="1" Text="{Binding Code}"  VerticalOptions="EndAndExpand"/>
-                        <Label Margin="10,0" Grid.Column="2" Text="{Binding Description}" />
-                        <Label Margin="10,0" Grid.Column="3" Text="{Binding OptParam1}" />
-                        <Label Margin="10,0" Grid.Column="4" Text="{Binding OptParam2}"  />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                                <Label Grid.Column="0" Grid.Row="0" FontSize="Micro" Text="{Binding ListName}" FontAttributes="Bold" />
+                                <Label Margin="0,0" Grid.Row="1" FontSize="Body" Grid.Column="0" Text="{Binding Description}" FontAttributes="Bold" />
+                                <Label  Margin="0,0" FontSize="Micro"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Code}"  />
+
+
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

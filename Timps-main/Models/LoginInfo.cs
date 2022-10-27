@@ -12,7 +12,6 @@ namespace TekTrackingCore.Model
     using Newtonsoft.Json.Converters;
     using System;
     using System.Collections.Generic;
-
     using System.Globalization;
 
 
@@ -208,7 +207,7 @@ namespace TekTrackingCore.Model
         public string ApplicationType { get; set; }
 
         [JsonProperty("compatibleMobileApps")]
-        public string CompatibleMobileApps { get; set; }
+        public List<double> CompatibleMobileApps { get; set; }
 
         [JsonProperty("webVersion")]
         public string WebVersion { get; set; }
@@ -225,6 +224,7 @@ namespace TekTrackingCore.Model
     public partial class LoginInfo
     {
         public static LoginInfo FromJson(string json) => JsonConvert.DeserializeObject<LoginInfo>(json, TekTrackingCore.Model.Converter.Settings);
+       
     }
 
     public static class Serialize
@@ -238,6 +238,8 @@ namespace TekTrackingCore.Model
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
+            MissingMemberHandling= MissingMemberHandling.Ignore,
+            NullValueHandling=NullValueHandling.Ignore,
             Converters =
             {
                 ActionConverter.Singleton,

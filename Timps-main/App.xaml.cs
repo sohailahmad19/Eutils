@@ -1,10 +1,12 @@
-﻿using TekTrackingCore.Views;
+﻿using TekTrackingCore.Model;
+using TekTrackingCore.Views;
 
 namespace TekTrackingCore;
 
 public partial class App : Application
 {
-	public App()
+    public static LoginInfo CurrentUserDetails { get; internal set; }
+    public App()
 	{
 		InitializeComponent();
 

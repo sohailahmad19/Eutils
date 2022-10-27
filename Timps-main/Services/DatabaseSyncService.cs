@@ -17,6 +17,7 @@ namespace TekTrackingCore.Services
         public string results;
         public List<StaticListItemDTO1> staticListItemDTOs { get; set; }
         public Action SetSyncCallback { get;  set; }
+        public string LastTimestamp { get; set; }
 
         JsonSerializerOptions _serializerOptions;
         public async void Start()
@@ -35,7 +36,7 @@ namespace TekTrackingCore.Services
                  
                 return results;
 
-            }, 35000);
+            }, AppConstants.DBTIMESYNCINTERVAL);
             timerTask.OnCompleted += TimerTask_OnCompleted; ; ;
             timerTask.Start();
            
@@ -54,11 +55,18 @@ namespace TekTrackingCore.Services
             System.Diagnostics.Debug.WriteLine("This is a log", AppConstants.LIST_URL);
 
             JSONWebService service = ServiceResolver.ServiceProvider.GetRequiredService<JSONWebService>();
-            results = await service.GetJSONAsync(AppConstants.LIST_URL, 10000);
+            string url = string.Format(AppConstants.LIST_URL, 300, LastTimestamp);
+            results = await service.GetJSONAsync(url, 10000);
             var responseDTO = JsonSerializer.Deserialize<MessageListResponseDTO>(results);
-            foreach(var itemDTO in responseDTO.Result) 
+
+
+            if (responseDTO != null)
             {
-                staticListItemDTOs.AddRange(itemDTO);
+                LastTimestamp = responseDTO.Ts;
+                foreach (var itemDTO in responseDTO.Result)
+                {
+                    staticListItemDTOs.AddRange(itemDTO);
+                }
             }
         }
 

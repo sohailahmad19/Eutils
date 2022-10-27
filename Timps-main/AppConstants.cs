@@ -21,5 +21,8 @@ namespace TekTrackingCore
         public static string USER_DETAILS = "USERDETAIL";
         public const string TOKEN_KEY = "token";
 
+
+        public const int DBTIMESYNCINTERVAL = 15000;
+
     }
 }
