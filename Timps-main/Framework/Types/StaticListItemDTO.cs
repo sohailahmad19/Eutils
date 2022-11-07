@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace TekTrackingCore.Framework.Types
 {
@@ -43,7 +45,7 @@ namespace TekTrackingCore.Framework.Types
         [JsonPropertyName("result")]
         public List<List<StaticListItemDTO1>> Result { get; set; }
     }
-    public class StaticListItemDTO1
+    public class StaticListItemDTO1 : INotifyPropertyChanged
     {
         [JsonPropertyName("tenantId")]
         public string TenantId { get; set; }
@@ -62,5 +64,44 @@ namespace TekTrackingCore.Framework.Types
 
         [JsonPropertyName("optParam2")]
         public string OptParam2 { get; set; }
+
+
+        [JsonPropertyName("contactName")]
+        public string ContactName { get; set; }
+
+        [JsonPropertyName("callTime")]
+        public string CallTime { get; set; }
+
+        [JsonPropertyName("contactImage")]
+        public string ContactImage { get; set; }
+
+     
+
+        [JsonPropertyName("isvisible")]
+        public bool IsVisible { get { return _isVisible; } set {  SetProperty(ref _isVisible, value); } }
+        private bool _isVisible;
+        internal IEnumerable<object> tasks;
+
+        public StaticListItemDTO1()
+        {
+            IsVisible = false;
+
+        }
+
+         
+        
+            public event PropertyChangedEventHandler PropertyChanged;
+
+            public bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = null)
+            {
+                if (EqualityComparer<T>.Default.Equals(field, value))
+                {
+                    return false;
+                }
+                field = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+                return true;
+            }
+        }
     }
-}
+

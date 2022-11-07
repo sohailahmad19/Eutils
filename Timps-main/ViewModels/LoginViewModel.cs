@@ -14,7 +14,7 @@ namespace TekTrackingCore.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel
     {
-        readonly ILoginRepository loginRepository;
+        private readonly ILoginRepository loginRepository;
 
             public LoginViewModel() 
         {
@@ -70,7 +70,7 @@ namespace TekTrackingCore.ViewModels
     
 
         [RelayCommand]
-        async Task<Task> Login()
+        private async Task<Task> Login()
         {
 
             if (!IsLoggedIn)

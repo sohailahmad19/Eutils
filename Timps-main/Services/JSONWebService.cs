@@ -43,7 +43,7 @@ namespace TekTrackingCore.Services
 
         public async Task<string> GetJSONAsync(String url, int timeout)
         {
-            Uri uri = new Uri(string.Format(url, 300));
+            Uri uri = new Uri(string.Format(url));
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", Token);
             try

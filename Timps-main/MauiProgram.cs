@@ -2,8 +2,10 @@
 using TekTrackingCore.ViewModels;
 using TekTrackingCore.Views;
 using TekTrackingCore.Services;
-
-
+using TekTrackingCore.Sample.Services;
+using TekTrackingCore.Sample.Helpers;
+using Syncfusion.Maui.ListView.Hosting;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace TekTrackingCore;
 
@@ -18,7 +20,8 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
+            .ConfigureSyncfusionCore()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
@@ -37,16 +40,27 @@ public static class MauiProgram
         builder.Services.AddSingleton<Briefing>();
 
         builder.Services.AddSingleton<StaticListItemViewModel>();
-        builder.Services.AddSingleton<StaticListItemPage>();
+        //builder.Services.AddSingleton<StaticListItemPage>();
 
         builder.Services.AddSingleton<JSONWebService>();
         builder.Services.AddSingleton<DatabaseSyncService>();
 
+        //builder.Services.AddSingleton<AccordionViewModel>();
+        builder.Services.AddSingleton<ExpandableView>();
+
+
+
+
         builder.Services.AddSingleton<IHttpsClientHandlerService, HttpsClientHandlerService>();
 
+        builder.Services.AddSingleton<DataService>();
+        builder.Services.AddSingleton<CompanyTreeViewBuilder>();
+        builder.Services.AddTransient<CompanyPage>();
+  
 
         MauiApp app = builder.Build();
         app.Services.UseResolver();
+      
 
 
         return app;

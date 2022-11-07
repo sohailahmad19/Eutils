@@ -32,13 +32,13 @@
             ContentTemplate="{DataTemplate local:Briefing}"/>
     </FlyoutItem>
 
-    <FlyoutItem   Title="HOS"  Icon="hos.png"  >
+    <!--<FlyoutItem   Title="HOS"  Icon="hos.png"  >
         <ShellContent
             Route="Hos" 
             Icon="hos.png"
             Title="HOS"
             ContentTemplate="{DataTemplate local:Hos}"/>
-    </FlyoutItem>
+    </FlyoutItem>-->
 
     <FlyoutItem   Title="HOS"  Icon="hos.png"  >
         <ShellContent
@@ -47,6 +47,16 @@
             Title="Select Run"
             ContentTemplate="{DataTemplate local:StaticListItemPage}"/>
     </FlyoutItem>
+
+
+    <FlyoutItem   Title="List"  Icon="hos.png"  >
+        <ShellContent
+            Route="ExpandableView" 
+            Icon="hos.png"
+            Title="List"
+            ContentTemplate="{DataTemplate local:ExpandableView}"/>
+    </FlyoutItem>
+
 
 
 

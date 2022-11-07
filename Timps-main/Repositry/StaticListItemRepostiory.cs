@@ -11,7 +11,7 @@ namespace TekTrackingCore
 {
     public class StaticListItemRepostiory
     {
-        string _dbPath;
+        private string _dbPath;
 
         public string StatusMessage { get; set; }
 

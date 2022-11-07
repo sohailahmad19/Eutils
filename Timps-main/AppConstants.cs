@@ -15,7 +15,7 @@ namespace TekTrackingCore
         public static string LocalhostUrl = DeviceInfo.Platform == DevicePlatform.Android ? "172.19.91.167" : "172.19.91.167";
         //    public static string LocalhostUrl = DeviceInfo.Platform == DevicePlatform.Android ? "192.168.1.8" : "localhost";
         public static string Scheme = "http"; // or https
-        public static string Port = "4001"; // 5000 for http, 5001 for https
+        public static string Port = "4040"; // 5000 for http, 5001 for https
         public static string LIST_URL = $"{Scheme}://{LocalhostUrl}:{Port}/api/list/pull/300";                
         public static string Login_RestUrl = $"{Scheme}://{LocalhostUrl}:{Port}/api/login";        
         public static string USER_DETAILS = "USERDETAIL";

@@ -19,7 +19,7 @@ namespace TekTrackingCore.Services
         public Action SetSyncCallback { get;  set; }
         public string LastTimestamp { get; set; }
 
-        JsonSerializerOptions _serializerOptions;
+        private JsonSerializerOptions _serializerOptions;
         public async void Start()
         {
 
@@ -58,6 +58,11 @@ namespace TekTrackingCore.Services
             string url = string.Format(AppConstants.LIST_URL, 300, LastTimestamp);
             results = await service.GetJSONAsync(url, 10000);
             var responseDTO = JsonSerializer.Deserialize<MessageListResponseDTO>(results);
+
+            //Preferences.Set(typeof(LoginInfo).ToString(), responseDTO.ToString());
+         Preferences.Default.Set("work_plan", responseDTO.Result);
+          var a=  Preferences.Get("work_plan","");
+            Console.WriteLine(a);
 
 
             if (responseDTO != null)

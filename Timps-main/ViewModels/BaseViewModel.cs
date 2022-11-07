@@ -11,10 +11,10 @@ namespace TekTrackingCore.ViewModels
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsNotBusy))]
-        bool isBusy;
+        private bool isBusy;
 
         [ObservableProperty]
-        string title;
+        private string title;
 
         public bool IsNotBusy => !IsBusy;
     }

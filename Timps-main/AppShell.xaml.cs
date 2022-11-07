@@ -11,6 +11,7 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute(nameof(Hos), typeof(Hos));
         Routing.RegisterRoute(nameof(StaticListItemPage), typeof(StaticListItemPage));
+        Routing.RegisterRoute(nameof(ExpandableView), typeof(ExpandableView));
 
 
     }
