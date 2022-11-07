@@ -1,5 +1,6 @@
 ﻿
 using CommunityToolkit.Mvvm.ComponentModel;
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Syncfusion.Maui.Data;
@@ -13,7 +14,9 @@ using System.Threading.Tasks;
 using TekTrackingCore.Framework;
 using TekTrackingCore.Framework.Types;
 using TekTrackingCore.Repositry;
+using TekTrackingCore.Sample.Models;
 using TekTrackingCore.Services;
+
 
 namespace TekTrackingCore.ViewModels
 {
@@ -45,6 +48,9 @@ namespace TekTrackingCore.ViewModels
         [ObservableProperty]
         public ExtendedObservableCollection<StaticListItemDTO1> staticListItemsList;
 
+        [ObservableProperty]
+        public ExtendedObservableCollection<WorkPlanDto> workPlanList;
+
 
         private DatabaseSyncService service;
         public StaticListItemViewModel()
@@ -53,6 +59,8 @@ namespace TekTrackingCore.ViewModels
 
             service = ServiceResolver.ServiceProvider.GetRequiredService<DatabaseSyncService>();
             StaticListItemsList = new ExtendedObservableCollection<StaticListItemDTO1>();
+            workPlanList = new ExtendedObservableCollection<WorkPlanDto>();
+
             //staticListItemsList.Add(new StaticListItemDTO1 { Code = "666", Description = "555", ListName = "444", OptParam1 = "3333", OptParam2 = "33", TenantId = "123" });
 
 
@@ -132,6 +140,7 @@ namespace TekTrackingCore.ViewModels
 
             if (filterdlist.Count() == 1)
             {
+
                 var staticlistitem = filterdlist.FirstOrDefault();
                 if (staticlistitem.Code != "-1")
                 {
@@ -149,18 +158,32 @@ namespace TekTrackingCore.ViewModels
 
                 foreach (var listItems in StaticListItemsList)
                 {
-                    var item = listItems.OptParam1;
-                    var jParse = JObject.Parse(item); 
-                     var tasks = jParse["tasks"] ;
-                    foreach (var task in tasks)
+                     var item = listItems.OptParam1;
+
+                    var jsonSettings = new JsonSerializerSettings
                     {
-                        foreach(var unit in task["units"])
-                        {
-                            Console.WriteLine(unit.ToString(), "unit");
-                            StaticListItemsList.Add(task);
-                        }
-                    }
+                        NullValueHandling = NullValueHandling.Ignore,
+                        MissingMemberHandling = MissingMemberHandling.Ignore
+                    };
+
+                    WorkPlanDto result = JsonConvert.DeserializeObject<WorkPlanDto>(item, jsonSettings); // jsonSettings are explicitly supplied
+
+                    workPlanList.Add(result);
+
+                    //var item = listItems.OptParam1;
+                    //var jParse = JObject.Parse(item); 
+                    // var tasks = jParse["tasks"] ;
+                    //foreach (var task in tasks)
+                    //{
+                    //    foreach(var unit in task["units"])
+                    //    {
+
+                    //        Console.WriteLine(unit.ToString(), "unit");
+                    //    }
+                    //}
                 }
+
+                staticListItemsList.Clear();
 
 
             }

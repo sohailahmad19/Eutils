@@ -16,26 +16,16 @@ namespace TekTrackingCore.Sample.Models
     }
 
 
+
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class InspectionDate
+    // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
+    public class Completion
     {
-        [JsonProperty("last_inspection_stray")]
-        public string LastInspectionStray { get; set; }
+        [JsonProperty("completed")]
+        public bool Completed { get; set; }
 
-        [JsonProperty("next_inspection_stray")]
-        public DateTime NextInspectionStray { get; set; }
-
-        [JsonProperty("last_inspection_structure")]
-        public string LastInspectionStructure { get; set; }
-
-        [JsonProperty("next_inspection_structure")]
-        public object NextInspectionStructure { get; set; }
-
-        [JsonProperty("test")]
-        public string Test { get; set; }
-
-        [JsonProperty("next_test")]
-        public object NextTest { get; set; }
+        [JsonProperty("ranges")]
+        public List<Range> Ranges { get; set; }
     }
 
     public class InspectionFormInfo
@@ -92,10 +82,58 @@ namespace TekTrackingCore.Sample.Models
         public string Id { get; set; }
     }
 
+    public class Interval
+    {
+        [JsonProperty("start")]
+        public string Start { get; set; }
+
+        [JsonProperty("end")]
+        public string End { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("expEnd")]
+        public string ExpEnd { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("startLocation")]
+        public string StartLocation { get; set; }
+
+        [JsonProperty("traversed")]
+        public string Traversed { get; set; }
+
+        [JsonProperty("observed")]
+        public string Observed { get; set; }
+
+        [JsonProperty("allSideTracks")]
+        public bool AllSideTracks { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
     public class LineCords
     {
         [JsonProperty("geometry")]
         public string Geometry { get; set; }
+    }
+
+    public class Range
+    {
+        [JsonProperty("inspectionId")]
+        public string InspectionId { get; set; }
+
+        [JsonProperty("inspectionName")]
+        public string InspectionName { get; set; }
+
+        [JsonProperty("user")]
+        public User User { get; set; }
+
+        [JsonProperty("intervals")]
+        public List<Interval> Intervals { get; set; }
     }
 
     public class WorkPlanDto
@@ -190,18 +228,14 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("__v")]
         public int V { get; set; }
 
-        [JsonProperty("nextInspectionDate")]
-        public DateTime NextInspectionDate { get; set; }
-
-        [JsonProperty("perTime")]
-        public string PerTime { get; set; }
-
-        [JsonProperty("timeFrame")]
-        public string TimeFrame { get; set; }
-
         [JsonProperty("lastInspection")]
         public DateTime LastInspection { get; set; }
 
+        [JsonProperty("completion")]
+        public Completion Completion { get; set; }
+
+        [JsonProperty("nextInspectionDate")]
+        public DateTime NextInspectionDate { get; set; }
     }
 
     public class RunRange
@@ -270,7 +304,7 @@ namespace TekTrackingCore.Sample.Models
         public string AssetId { get; set; }
 
         [JsonProperty("coordinates")]
-        public List<List<double>> Coordinates { get; set; }
+        public List<object> Coordinates { get; set; }
 
         [JsonProperty("assetType")]
         public string AssetType { get; set; }
@@ -284,20 +318,14 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("locationType")]
         public string LocationType { get; set; }
 
-        [JsonProperty("inspectionDate")]
-        public InspectionDate InspectionDate { get; set; }
-
-        [JsonProperty("inspectionStatus")]
-        public object InspectionStatus { get; set; }
-
         [JsonProperty("testForm")]
         public List<TestForm> TestForm { get; set; }
 
         [JsonProperty("inspection_type")]
         public string InspectionType { get; set; }
 
-        [JsonProperty("frequency")]
-        public string Frequency { get; set; }
+        [JsonProperty("inspection_freq")]
+        public string InspectionFreq { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -313,7 +341,10 @@ namespace TekTrackingCore.Sample.Models
 
         [JsonProperty("email")]
         public string Email { get; set; }
+
+       
     }
+
 
 
 

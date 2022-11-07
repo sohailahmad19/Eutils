@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
+using TekTrackingCore.Sample.Models;
 
 namespace TekTrackingCore.Framework.Types
 {
@@ -45,6 +47,48 @@ namespace TekTrackingCore.Framework.Types
         [JsonPropertyName("result")]
         public List<List<StaticListItemDTO1>> Result { get; set; }
     }
+
+    public class Unit
+    {
+        [JsonProperty("unitId")]
+        public string UnitId { get; set; }
+
+        [JsonProperty("assetId")]
+        public string AssetId { get; set; }
+
+        [JsonProperty("coordinates")]
+        public List<List<double>> Coordinates { get; set; }
+
+        [JsonProperty("assetType")]
+        public string AssetType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("parent_id")]
+        public string ParentId { get; set; }
+
+        [JsonProperty("locationType")]
+        public string LocationType { get; set; }
+
+        [JsonProperty("inspectionDate")]
+        public string  InspectionDate { get; set; }
+
+        [JsonProperty("inspectionStatus")]
+        public object InspectionStatus { get; set; }
+
+        [JsonProperty("testForm")]
+        public List<TestForm> TestForm { get; set; }
+
+        [JsonProperty("inspection_type")]
+        public string InspectionType { get; set; }
+
+        [JsonProperty("frequency")]
+        public string Frequency { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+    }
     public class StaticListItemDTO1 : INotifyPropertyChanged
     {
         [JsonPropertyName("tenantId")]
@@ -69,13 +113,10 @@ namespace TekTrackingCore.Framework.Types
         [JsonPropertyName("contactName")]
         public string ContactName { get; set; }
 
-        [JsonPropertyName("callTime")]
-        public string CallTime { get; set; }
+       
 
-        [JsonPropertyName("contactImage")]
-        public string ContactImage { get; set; }
 
-     
+
 
         [JsonPropertyName("isvisible")]
         public bool IsVisible { get { return _isVisible; } set {  SetProperty(ref _isVisible, value); } }

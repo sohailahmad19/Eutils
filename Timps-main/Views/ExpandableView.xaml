@@ -21,7 +21,7 @@
     
     <ContentPage.Content>
         <Grid x:Name="mainGrid" BackgroundColor="#F0F0F0" Margin='{OnPlatform Android="5,0,0,0",iOS="5,0,0,0", Default="0,0,0,0"}'>
-            <ListView:SfListView x:Name="listView"  ItemsSource="{Binding StaticListItemsList}"
+            <ListView:SfListView x:Name="listView"  ItemsSource="{Binding WorkPlanList}"
                                 AutoFitMode="DynamicHeight" SelectionMode="None" ItemSpacing="0,2.5,0,2.5">
                 <ListView:SfListView.ItemTemplate>
                     <DataTemplate>
@@ -85,17 +85,13 @@
                                                            Text="&#xe767;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default =Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
 
                                 <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="LightGray"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Description}" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
                                                        VerticalOptions="Center" Opacity="87"/>
-                                <Label Grid.Row="2" Grid.Column="1" Text="Add to a contact" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
-                                                       VerticalOptions="Center" Opacity="87"/>
-                                <Label Grid.Row="3" Grid.Column="1" Text="Send a message" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
-                                                       VerticalOptions="Center" Opacity="87"/>
-                                <Label Grid.Row="4" Grid.Column="1" Text="Block/report Spam" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
-                                                       VerticalOptions="Center" Opacity="87"/>
-                                <Label Grid.Row="5" Grid.Column="1" Text="Call details" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
-                                                       VerticalOptions="Center" Opacity="87"/>
+                                <!--<localone:UnitControl BindingContext="{Binding Tasks}">
+                                    
+                                </localone:UnitControl>-->    
                             </Grid>
+                            
                         </Grid>
                     </DataTemplate>
                 </ListView:SfListView.ItemTemplate>
