@@ -138,14 +138,14 @@ namespace TekTrackingCore.Sample.Models
         public List<Interval> Intervals { get; set; }
     }
 
-    public class WorkPlanDto :INotifyPropertyChanged
+    public class WorkPlanDto : INotifyPropertyChanged
     {
 
 
         [JsonPropertyName("isvisible")]
         public bool IsVisible { get { return _isVisible; } set { SetProperty(ref _isVisible, value); } }
         private bool _isVisible;
-        internal IEnumerable<object> tasks;
+        //internal IEnumerable<object> tasks;
 
         public WorkPlanDto()
         {
@@ -266,6 +266,13 @@ namespace TekTrackingCore.Sample.Models
 
         [JsonProperty("nextInspectionDate")]
         public DateTime NextInspectionDate { get; set; }
+
+        public List<Unit> AllUnits { get {
+                List<Unit> allUnits = (from list in Tasks
+                                       from item in list.Units
+                                       select item).ToList();
+                return allUnits;
+            } }
     }
 
     public class RunRange
@@ -325,8 +332,11 @@ namespace TekTrackingCore.Sample.Models
         public string TestId { get; set; }
     }
 
+
+
     public class Unit
     {
+        
         [JsonProperty("unitId")]
         public string UnitId { get; set; }
 
@@ -359,6 +369,8 @@ namespace TekTrackingCore.Sample.Models
 
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        
     }
 
     public class User

@@ -25,7 +25,7 @@
                                 AutoFitMode="DynamicHeight" SelectionMode="None" ItemSpacing="0,2.5,0,2.5">
                 <ListView:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid x:Name="grid" Padding="1" Margin="1" VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid x:Name="grid"  Margin="1" VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="0,10,0,10" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="60" />
                                 <RowDefinition Height ="*"/>
@@ -44,49 +44,37 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <Label Grid.Row="0" LineBreakMode="NoWrap" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" TextColor="#DE000000" Text="{Binding Description}" FontFamily="Roboto-Medium"
-                                                               FontSize="{OnPlatform Android={OnIdiom Phone=16, Tablet=18}, iOS={OnIdiom Phone=16, Tablet=18}, MacCatalyst=18 ,  Default=16}"/>
+                                  
                                     <Label Grid.Row="1"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="NoWrap" Text="{Binding Title}"
                                                                FontFamily="Roboto-Regular"
                                                                TextColor="#99000000" 
                                                                FontSize="{OnPlatform Android={OnIdiom Phone=12, Tablet=14}, iOS={OnIdiom Phone=12, Tablet=14}, MacCatalyst=14 , Default= 14 }"/>
                                 </Grid>
-                                <Grid Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <Label HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"
-                                                               Text ="&#xe766;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default= Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#,Default=Sync FontIcons.ttf#Sync FontIcons}"/>
-                                </Grid>
+                               
                             </Grid>
                             
                             <!--Expandable view-->
-                            <Grid x:Name="ExpandGrid" IsVisible="{Binding IsVisible}" ColumnSpacing="0" RowSpacing="0" Grid.Row="1" Padding="10,0,0,0"
-                                                  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1" />
-                                    <RowDefinition Height="40" />
-                                    <RowDefinition Height="40" />
-                                    <RowDefinition Height="40" />
-                                    <RowDefinition Height="40" />
-                                    <RowDefinition Height="40" />
+                            <Grid x:Name="ExpandGrid" IsVisible="{Binding IsVisible}" ColumnSpacing="0" RowSpacing="0" Grid.Row="1" Padding="0,0,0,0"
+                                                  HorizontalOptions="FillAndExpand" >
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="1"  />
+                                    <RowDefinition Height="70" />
+                                  
+                                  
+                            
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions >
                                     <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <BoxView Grid.Row="0" BackgroundColor="LightGray"/>
-                                <Label Grid.Row="1" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                                       Text="&#xe761;" Margin="0,5,0,0" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default=Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
-                                <Label Grid.Row="2" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                                       Text="&#xe72a;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large,Default=Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
-                                <Label Grid.Row="3" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                                       Text="&#xe746;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default=Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
-                                <Label Grid.Row="4" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                                       Text="&#xe722;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default=Medium }"  FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
+                                <BoxView  BackgroundColor="LightGray"/>
+                                
                                
 
                                 <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="LightGray"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
+                                <Label Text="{Binding Title}" TextColor="#000000" FontSize="14" HorizontalOptions="Center"
                                                        VerticalOptions="Center" Opacity="87"/>
-                                <localone:UnitControl BindingContext="{Binding Units}" Grid.Row="5" Grid.Column="1">
+                                <localone:UnitControl BindingContext="{Binding AllUnits}" Grid.Row="5" Grid.Column="1">
                                     
                                 </localone:UnitControl>    
                             </Grid>
