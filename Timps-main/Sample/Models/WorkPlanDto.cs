@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -136,8 +138,36 @@ namespace TekTrackingCore.Sample.Models
         public List<Interval> Intervals { get; set; }
     }
 
-    public class WorkPlanDto
+    public class WorkPlanDto :INotifyPropertyChanged
     {
+
+
+        [JsonPropertyName("isvisible")]
+        public bool IsVisible { get { return _isVisible; } set { SetProperty(ref _isVisible, value); } }
+        private bool _isVisible;
+        internal IEnumerable<object> tasks;
+
+        public WorkPlanDto()
+        {
+            IsVisible = false;
+
+        }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                return false;
+            }
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            return true;
+        }
+
         [JsonProperty("user")]
         public User User { get; set; }
 

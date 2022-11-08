@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Syncfusion.Maui.ListView.Helpers;
 using TekTrackingCore.Framework.Types;
+using TekTrackingCore.Sample.Models;
 
 namespace TekTrackingCore
 {
@@ -12,7 +13,7 @@ namespace TekTrackingCore
     {
         #region Fields
 
-        private StaticListItemDTO1 tappedItem;
+        private WorkPlanDto tappedItem;
         private Syncfusion.Maui.ListView.SfListView listview;
         #endregion
 
@@ -47,7 +48,7 @@ namespace TekTrackingCore
                    listview.RefreshItem(previousIndex, previousIndex, false);
             }
 
-            if (tappedItem == (e.DataItem as StaticListItemDTO1))
+            if (tappedItem == (e.DataItem as WorkPlanDto))
             {
                 if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)
                 {
@@ -59,7 +60,7 @@ namespace TekTrackingCore
                 return;
             }
 
-            tappedItem = e.DataItem as StaticListItemDTO1;
+            tappedItem = e.DataItem as WorkPlanDto;
             tappedItem.IsVisible = true;
 
             if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)

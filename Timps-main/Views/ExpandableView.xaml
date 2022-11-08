@@ -81,15 +81,14 @@
                                                        Text="&#xe746;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default=Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
                                 <Label Grid.Row="4" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                                        Text="&#xe722;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default=Medium }"  FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
-                                <Label Grid.Row="5" Grid.Column="0" WidthRequest="30" HeightRequest="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                                                           Text="&#xe767;" TextColor="#757575" FontSize="{OnPlatform Android=20, iOS=Large, MacCatalyst=Large, Default =Medium }" FontFamily="{OnPlatform iOS=Sync FontIcons, MacCatalyst=Sync FontIcons, Android=Sync FontIcons.ttf#, Default =Sync FontIcons.ttf#Sync FontIcons}"/>
+                               
 
                                 <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="LightGray"/>
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Title}" TextColor="#000000" FontSize="14" HorizontalOptions="Start"
                                                        VerticalOptions="Center" Opacity="87"/>
-                                <!--<localone:UnitControl BindingContext="{Binding Tasks}">
+                                <localone:UnitControl BindingContext="{Binding Units}" Grid.Row="5" Grid.Column="1">
                                     
-                                </localone:UnitControl>-->    
+                                </localone:UnitControl>    
                             </Grid>
                             
                         </Grid>
