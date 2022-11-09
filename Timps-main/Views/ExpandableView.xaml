@@ -20,69 +20,41 @@
     </ContentPage.Resources>
     
     <ContentPage.Content>
-        <Grid x:Name="mainGrid" BackgroundColor="#F0F0F0" Margin='{OnPlatform Android="5,0,0,0",iOS="5,0,0,0", Default="0,0,0,0"}'>
+        <HorizontalStackLayout x:Name="mainGrid" BackgroundColor="#F0F0F0" Margin='{OnPlatform Android="5,0,0,0",iOS="5,0,0,0", Default="0,0,0,0"}'>
             <ListView:SfListView x:Name="listView"  ItemsSource="{Binding WorkPlanList}"
                                 AutoFitMode="DynamicHeight" SelectionMode="None" ItemSpacing="0,2.5,0,2.5">
                 <ListView:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <Grid x:Name="grid"  Margin="1" VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="0,10,0,10" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="60" />
-                                <RowDefinition Height ="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Row="0" Grid.Column="0">
-                                    <!--<Image HeightRequest="45" Margin="5,0,0,0" WidthRequest="45" Source="{Binding ContactImage}" VerticalOptions="Center" HorizontalOptions="Center" />-->
-                                </Grid>
-                                <Grid Grid.Row="0" Grid.Column="1" RowSpacing="1" Padding="5" VerticalOptions="Center">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
+                        <StackLayout   Margin="0,0,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#D3D3D3" HorizontalOptions="FillAndExpand"  Padding="5,10,0,10" >
+                           
+                                <StackLayout  Padding="3" VerticalOptions="Center">
+                                   
                                   
-                                    <Label Grid.Row="1"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="NoWrap" Text="{Binding Title}"
+                                    <Label  VerticalTextAlignment="Center"   Text="{Binding Title}"
                                                                FontFamily="Roboto-Regular"
-                                                               TextColor="#99000000" 
-                                                               FontSize="{OnPlatform Android={OnIdiom Phone=12, Tablet=14}, iOS={OnIdiom Phone=12, Tablet=14}, MacCatalyst=14 , Default= 14 }"/>
-                                </Grid>
+                                                              FontAttributes="Bold"
+                                                               FontSize="{OnPlatform Android={OnIdiom Phone=14, Tablet=14}, iOS={OnIdiom Phone=12, Tablet=14}, MacCatalyst=14 , Default= 14 }"/>
+                                </StackLayout>
                                
-                            </Grid>
+                          
                             
-                            <!--Expandable view-->
-                            <Grid x:Name="ExpandGrid" IsVisible="{Binding IsVisible}" ColumnSpacing="0" RowSpacing="0" Grid.Row="1" Padding="0,0,0,0"
+                         
+                            <StackLayout x:Name="ExpandGrid" IsVisible="{Binding IsVisible}"  Padding="0,10,0,0"
                                                   HorizontalOptions="FillAndExpand" >
-                                <Grid.RowDefinitions >
-                                    <RowDefinition Height="1"  />
-                                    <RowDefinition Height="70" />
-                                  
-                                  
-                            
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions >
-                                    <ColumnDefinition Width="50" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
+                              
                                 <BoxView  BackgroundColor="LightGray"/>
-                                
-                               
 
-                                <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="LightGray"/>
-                                <Label Text="{Binding Title}" TextColor="#000000" FontSize="14" HorizontalOptions="Center"
-                                                       VerticalOptions="Center" Opacity="87"/>
-                                <localone:UnitControl BindingContext="{Binding AllUnits}" Grid.Row="5" Grid.Column="1">
+                             
+                             
+                                <localone:UnitControl BindingContext="{Binding AllUnits}">
                                     
                                 </localone:UnitControl>    
-                            </Grid>
-                            
-                        </Grid>
+                            </StackLayout>
+
+                        </StackLayout>
                     </DataTemplate>
                 </ListView:SfListView.ItemTemplate>
             </ListView:SfListView>
-        </Grid>
+        </HorizontalStackLayout>
     </ContentPage.Content>
 </ContentPage>

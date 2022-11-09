@@ -6,41 +6,21 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
               
-                    <!--<Grid.RowDefinitions>
-                        --><!--<RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />--><!--
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        --><!--<ColumnDefinition Width="Auto" />--><!--
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>-->
-                  
-                    <!--<Label Grid.Column="1"
-                       Text="{Binding Desc}"
-                       FontAttributes="Bold" />
-                    <Label Grid.Row="1"
-                       Grid.Column="1"
-                       Text="{Binding Title}"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />-->
-                <Label Text="{Binding UnitId}" Margin="0,10,0,0" />
-               
+                   
                 
+               
+                <Frame BorderColor="Gray"
+                        CornerRadius="0" HeightRequest="90">
+                       <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
                     
-                    <!--<ListView  ItemsSource="{Binding Units}">
-                        <ListView.ItemTemplate >
-                            <DataTemplate>
-                                <ViewCell>
-                                <StackLayout>
-                                    <Label Text="{Binding UnitId}" />
-                                </StackLayout>
+      
+                    <Label Text="{Binding UnitId}" Margin="0,0,0,0" />
+                        <Button  Padding="10" Text="Clicksss" CornerRadius="0" TextColor="White"/>
+                    </FlexLayout>
+                  
+                </Frame>
 
-                            </ViewCell>
-                            </DataTemplate>
 
-                        </ListView.ItemTemplate>
-                    </ListView>-->
          
 
             </DataTemplate>
