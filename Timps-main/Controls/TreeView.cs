@@ -163,16 +163,16 @@ namespace TekTrackingCore.Controls
             children.Add(xamlItemTreeViewNode);
         }
 
-/*        private static void ProcessXamlItems(TreeViewNode node, XamlItemGroup xamlItemGroup)
-        {
-            var children = new ObservableCollection<TreeViewNode>();
-            foreach (var xamlItem in xamlItemGroup.XamlItems.OrderBy(xi => xi.Key))
-            {
-                CreateXamlItem(children, xamlItem);
-            }
-            node.ChildrenList = children;
-        }
-*/
+        /*        private static void ProcessXamlItems(TreeViewNode node, XamlItemGroup xamlItemGroup)
+                {
+                    var children = new ObservableCollection<TreeViewNode>();
+                    foreach (var xamlItem in xamlItemGroup.XamlItems.OrderBy(xi => xi.Key))
+                    {
+                        CreateXamlItem(children, xamlItem);
+                    }
+                    node.ChildrenList = children;
+                }
+        */
         public ObservableCollection<TreeViewNode> ProcessXamlItemGroups(XamlItemGroup xamlItemGroups)
         {
             var rootNodes = new ObservableCollection<TreeViewNode>();

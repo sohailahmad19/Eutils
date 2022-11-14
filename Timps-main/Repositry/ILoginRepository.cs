@@ -9,17 +9,18 @@ namespace TekTrackingCore.Repositry
 {
     public interface ILoginRepository
     {
-    
+
         Task<UserInfo> Login(string username, string password);
         public bool IsAlreadyLoggedIn();
         Task<UserInfo> Logout();
 
-    
+
 
 
         public string BtnText();
 
         public Task Proceed();
+
 
     }
 

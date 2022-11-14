@@ -10,44 +10,16 @@ using TekTrackingCore.Framework.Types;
 
 namespace TekTrackingCore.Services
 {
-    public class DatabaseSyncService
+    public class InspectionService
     {
-        public TimerDelegate<string> timerTask;
         public int count;
         public string results;
         public List<StaticListItemDTO1> staticListItemDTOs { get; set; }
-        public Action SetSyncCallback { get; set; }
+
         public string LastTimestamp { get; set; }
 
         private JsonSerializerOptions _serializerOptions;
-        public async void Start()
-        {
 
-            staticListItemDTOs = new List<StaticListItemDTO1>();
-            Poll();
-
-            timerTask = new TimerDelegate<string>(() =>
-            {
-
-                Application.Current.Dispatcher.DispatchAsync(() =>
-                {
-                    Poll();
-                });
-
-                return results;
-
-            }, AppConstants.DBTIMESYNCINTERVAL);
-            timerTask.OnCompleted += TimerTask_OnCompleted; ; ;
-            timerTask.Start();
-
-
-        }
-
-        public void Stop()
-        {
-            timerTask.Stop();
-
-        }
 
         public async void Poll()
         {
@@ -75,13 +47,5 @@ namespace TekTrackingCore.Services
             }
         }
 
-
-
-        private void TimerTask_OnCompleted(object sender, string e)
-        {
-            Console.WriteLine(e);
-
-            if (SetSyncCallback != null) { SetSyncCallback(); };
-        }
     }
 }

@@ -57,11 +57,11 @@ namespace TekTrackingCore.Services
                 if (response.IsSuccessStatusCode)
                 {
                     string serialized = await response.Content.ReadAsStringAsync();
-                System.Diagnostics.Debug.WriteLine(serialized, "serialized.............................................................");
-                //Console.WriteLine(serialized, "serialized");
-              
-                var userinfolist = LoginInfo.FromJson(serialized);
-                Console.WriteLine( "userinfolist");
+                    System.Diagnostics.Debug.WriteLine(serialized, "serialized.............................................................");
+                    //Console.WriteLine(serialized, "serialized");
+
+                    var userinfolist = LoginInfo.FromJson(serialized);
+                    Console.WriteLine("userinfolist");
 
                     Preferences.Set(typeof(LoginInfo).ToString(), serialized);
 
@@ -74,7 +74,7 @@ namespace TekTrackingCore.Services
                     Preferences.Set(AppConstants.TOKEN_KEY, userinfo.Token);
                     Preferences.Set(AppConstants.USER_DETAILS, serialized);
                     //System.Diagnostics.Debug.WriteLine(Preferences.Get(typeof(AppConstants.TOKEN_KEY).ToString(), ""));
-                    System.Diagnostics.Debug.WriteLine(userinfolist,"userinfo list");
+                    System.Diagnostics.Debug.WriteLine(userinfolist, "userinfo list");
 
                     App.CurrentUserDetails = userinfolist;
 
@@ -83,14 +83,14 @@ namespace TekTrackingCore.Services
 
                 }
                 else
-         {
+                {
 
                     return null;
                 }
-        }
+            }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex,"login exception");
+                System.Diagnostics.Debug.WriteLine(ex, "login exception");
             }
             //finally
             //{
@@ -134,7 +134,7 @@ namespace TekTrackingCore.Services
                 Preferences.Remove(typeof(LoginInfo).ToString());
 
             }
-         
+
 
 
             //await Shell.Current.GoToAsync("///login");

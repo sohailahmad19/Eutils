@@ -40,7 +40,7 @@ namespace TekTrackingCore.Sample.Helpers
                 itemGroup.Name = plan.WpName;
 
                 // Employees first
-             //   var employeesDepartment = employees.Where(x => x.DepartmentId == dept.DepartmentId);
+                //   var employeesDepartment = employees.Where(x => x.DepartmentId == dept.DepartmentId);
 
                 //foreach (var emp in employeesDepartment)
                 //{

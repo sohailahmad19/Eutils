@@ -18,17 +18,17 @@ namespace TekTrackingCore.Framework.Types.DynForms
         private Dictionary<String, DynFromControlDv> formControlListMap;
         private Dictionary<String, String> currentValues;
         private Dictionary<String, String> copyCurrentValues;
-        
+
         private bool dirty = false;
         private Dictionary<String, Object> hmBackupValues;
         private bool changeOnly = false;
-        
-        private bool defaultValuesExists ;
+
+        private bool defaultValuesExists;
         private Units selectedUnit;
-        
-        
+
+
         private String formCompleteId;
-        
+
 
     }
 }

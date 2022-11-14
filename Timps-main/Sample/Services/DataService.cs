@@ -20,7 +20,7 @@ namespace TekTrackingCore.Sample.Services
         private DatabaseSyncService service;
 
 
-       public DataService()
+        public DataService()
         {
             service = ServiceResolver.ServiceProvider.GetRequiredService<DatabaseSyncService>();
 
@@ -38,14 +38,14 @@ namespace TekTrackingCore.Sample.Services
 
         }
 
-        
+
 
         public void onSyncCallback()
         {
             var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "WorkPlanTemplate").Take(10));
             Console.WriteLine(filterdlist.ToString(), "filteredlist");
 
-          
+
 
             //StaticListItemsList.Execute(items => { items.Clear(); items.AddRange(filterdlist); });
 
@@ -68,7 +68,7 @@ namespace TekTrackingCore.Sample.Services
                 foreach (var filter in filterdlist)
                 {
                     Console.WriteLine(filter.ToString(), "filter list");
-                   //assetslist.AddRan(filter.OptParam1)
+                    //assetslist.AddRan(filter.OptParam1)
 
 
                 }
@@ -94,8 +94,8 @@ namespace TekTrackingCore.Sample.Services
             Console.WriteLine(filterdlist.ToString(), "filteredlist");
             List<WorkPlan> list = new List<WorkPlan>();
 
-                foreach (var filter in filterdlist)
-                {
+            foreach (var filter in filterdlist)
+            {
 
                 Console.WriteLine(filter.Code);
                 //assetslist.AddRan(filter.OptParam1)
@@ -110,9 +110,9 @@ namespace TekTrackingCore.Sample.Services
                     //Console.WriteLine(extract.title);
                     list.Add(new WorkPlan { WpName = myDeserializedClass.Title });
                 }
-                
-               }
-            
+
+            }
+
 
 
             return list;

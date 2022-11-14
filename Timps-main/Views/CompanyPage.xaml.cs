@@ -9,26 +9,26 @@ namespace TekTrackingCore.Views;
 
 public partial class CompanyPage : ContentPage
 {
-	private DataService service;
-	private CompanyTreeViewBuilder CompanyTreeViewBuilder;
+    private DataService service;
+    private CompanyTreeViewBuilder CompanyTreeViewBuilder;
 
-	public CompanyPage(DataService service, CompanyTreeViewBuilder companyTreeViewBuilder)
-	{
-		InitializeComponent();
+    public CompanyPage(DataService service, CompanyTreeViewBuilder companyTreeViewBuilder)
+    {
+        InitializeComponent();
 
 
-		this.service = service;
-		this.CompanyTreeViewBuilder = companyTreeViewBuilder;
+        this.service = service;
+        this.CompanyTreeViewBuilder = companyTreeViewBuilder;
 
-		ProcessTreeView();
-	}
+        ProcessTreeView();
+    }
 
-	private void ProcessTreeView()
-	{
-		var xamlItemGroups = CompanyTreeViewBuilder.GroupData(service);
-		var rootNodes = TheTreeView.ProcessXamlItemGroups(xamlItemGroups);
-		TheTreeView.RootNodes = rootNodes;
-	}
+    private void ProcessTreeView()
+    {
+        var xamlItemGroups = CompanyTreeViewBuilder.GroupData(service);
+        var rootNodes = TheTreeView.ProcessXamlItemGroups(xamlItemGroups);
+        TheTreeView.RootNodes = rootNodes;
+    }
 }
 
 

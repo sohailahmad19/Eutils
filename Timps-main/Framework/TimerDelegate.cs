@@ -8,22 +8,22 @@ using TekTrackingCore.Framework.Types;
 
 namespace TekTrackingCore.Framework
 {
- 
+
     public class TimerDelegate<T>
     {
         public event EventHandler<T> OnCompleted;
         public bool IsRunning { get; set; }
-       
+
         public TimerDelegate()
         { }
 
-        public TimerDelegate( Func<T> fn, int interval)
+        public TimerDelegate(Func<T> fn, int interval)
         {
             Func = fn;
             Interval = interval;
         }
 
-        public  async void Start()
+        public async void Start()
         {
             if (Func == null)
                 throw new ArgumentNullException();
@@ -32,10 +32,10 @@ namespace TekTrackingCore.Framework
 
             while (IsRunning)
             {
-                 await Task.Delay(Interval);
+                await Task.Delay(Interval);
                 try
                 {
-                    var result =   Func();
+                    var result = Func();
                     OnCompleted(this, result);
                 }
                 catch (Exception ex)
@@ -45,7 +45,7 @@ namespace TekTrackingCore.Framework
                 }
             }
         }
-        public  void Stop()
+        public void Stop()
         {
             IsRunning = false;
         }

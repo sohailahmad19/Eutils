@@ -17,7 +17,7 @@ namespace TekTrackingCore.Controls
         private readonly BoxView _EmptyBox = new BoxView { BackgroundColor = Colors.Blue, Opacity = .5 };
 
         private const int ExpandButtonWidth = 32;
-        private ContentView _ExpandButtonContent = new ();
+        private ContentView _ExpandButtonContent = new();
 
         private readonly Grid _MainGrid = new Grid
         {

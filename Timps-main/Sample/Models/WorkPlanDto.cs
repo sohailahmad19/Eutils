@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using TekTrackingCore.Framework.Types;
 
 namespace TekTrackingCore.Sample.Models
 {
@@ -267,12 +268,27 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("nextInspectionDate")]
         public DateTime NextInspectionDate { get; set; }
 
-        public List<Unit> AllUnits { get {
+        public List<Unit> AllUnits
+        {
+            get
+            {
                 List<Unit> allUnits = (from list in Tasks
                                        from item in list.Units
                                        select item).ToList();
                 return allUnits;
-            } }
+            }
+        }
+        public List<TestForm> allTestForm
+        {
+            get
+            {
+                List<TestForm> allTestForm = (from list in Tasks
+                                              from unit in list.Units
+                                              from item in unit.TestForm
+                                              select item).ToList();
+                return allTestForm;
+            }
+        }
     }
 
     public class RunRange
@@ -303,6 +319,8 @@ namespace TekTrackingCore.Sample.Models
 
         [JsonProperty("units")]
         public List<Unit> Units { get; set; }
+
+
     }
 
     public class TestForm
@@ -336,7 +354,7 @@ namespace TekTrackingCore.Sample.Models
 
     public class Unit
     {
-        
+
         [JsonProperty("unitId")]
         public string UnitId { get; set; }
 
@@ -361,6 +379,7 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("testForm")]
         public List<TestForm> TestForm { get; set; }
 
+
         [JsonProperty("inspection_type")]
         public string InspectionType { get; set; }
 
@@ -370,7 +389,7 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("status")]
         public string Status { get; set; }
 
-        
+
     }
 
     public class User
@@ -384,7 +403,7 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("email")]
         public string Email { get; set; }
 
-       
+
     }
 
 

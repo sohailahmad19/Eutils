@@ -1,6 +1,8 @@
 ﻿
-using CommunityToolkit.Mvvm.ComponentModel;
 
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui.ApplicationModel.Communication;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Syncfusion.Maui.Data;
@@ -16,7 +18,7 @@ using TekTrackingCore.Framework.Types;
 using TekTrackingCore.Repositry;
 using TekTrackingCore.Sample.Models;
 using TekTrackingCore.Services;
-
+using Unit = TekTrackingCore.Sample.Models.Unit;
 
 namespace TekTrackingCore.ViewModels
 {
@@ -48,6 +50,10 @@ namespace TekTrackingCore.ViewModels
         [ObservableProperty]
         public ExtendedObservableCollection<StaticListItemDTO1> staticListItemsList;
 
+
+        [ObservableProperty]
+        public ExtendedObservableCollection<StaticListItemDTO1> staticListItemsList1;
+
         [ObservableProperty]
         public ExtendedObservableCollection<WorkPlanDto> workPlanList;
 
@@ -59,6 +65,7 @@ namespace TekTrackingCore.ViewModels
 
             service = ServiceResolver.ServiceProvider.GetRequiredService<DatabaseSyncService>();
             StaticListItemsList = new ExtendedObservableCollection<StaticListItemDTO1>();
+            StaticListItemsList1 = new ExtendedObservableCollection<StaticListItemDTO1>();
             workPlanList = new ExtendedObservableCollection<WorkPlanDto>();
 
             //staticListItemsList.Add(new StaticListItemDTO1 { Code = "666", Description = "555", ListName = "444", OptParam1 = "3333", OptParam2 = "33", TenantId = "123" });
@@ -66,69 +73,50 @@ namespace TekTrackingCore.ViewModels
 
             service.SetSyncCallback = onSyncCallback;
 
-            //    string[] CustomerNames = new string[] {
-            //    "Kyle",
-            //    "Irene",
-            //    "Gina",
-            //    "Katie",
-            //    "Victoria",
-            //    "Lily",
-            //    "Torrey",
-            //    "Lena",
-            //    "Violet",
-            //    "Daniel",
-            //    "Lucy",
-            //    "Brenda",
-            //    "Danielle",
-            //    "Howard",
-            //    "Fiona",
-            //    "Holly",
-            //    "Liz",
-            //    "Marley",
-            //    "Jack",
-            //    "Pete",
-            //    "Vince",
-            //    "Steve",
-            //    "Katherin",
-            //    "Aliza",
-            //    "Masona",
-            //    "Larry",
-            //    "Lia",
-            //    "Jayden ",
-            //    "Ethani",
-            //    "Noah ",
-            //    "John",
-            //    "Rose",
-            //    "Erin"
-            //};
 
 
-            //{
-            //    int counter = 11;
-            //    staticListItemsList = new ObservableCollection<StaticListItemDTO1>();
-            //    int i = 0;
-            //    foreach (var cusName in CustomerNames)
-            //    {
-            //        if (counter == 13)
-            //            counter = 1;
-            //        var contact = new StaticListItemDTO1(cusName);
-            //        contact.CallTime = CallTime[i];
-            //        contact.ContactImage = "people_circle" + counter + ".png";
-            //        i++;
-            //        staticListItemsList.Add(contact);
-            //        counter++;
+        }
+        [RelayCommand]
+        public async void Test(Unit unit)
+        {
+            if (unit != null)
+            {
+                string testCode = unit.TestForm[0].TestCode.ToString();
+                // var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "ApplicationLookups").Take(100));
+                // Console.WriteLine(filterdlist.ToString(), "filteredlist");
+                OnSyncCallback1(testCode);
 
-            //    }
+            }
+        }
 
-            //}
+        public async void OnSyncCallback1(string code)
+        {
+            var filterdlist = (service.staticListItemDTOs.Where(p => p.Code == code).Take(100));
+            Console.WriteLine(filterdlist.ToString(), "filteredlist");
 
 
 
+            //StaticListItemsList.Execute(items => { items.Clear(); items.AddRange(filterdlist); });
+
+            if (filterdlist.Count() == 1)
+            {
+
+                var staticlistitem = filterdlist.FirstOrDefault();
+                if (staticlistitem.Code != "-1")
+                {
+                    StaticListItemsList1.Add(filterdlist.FirstOrDefault());
+                }
+            }
+            foreach (var listItems in StaticListItemsList1)
+            {
+                var item = listItems.OptParam1;
+                await Shell.Current.GoToAsync($"{nameof(FormPage)}", true, new Dictionary<string, object> { { "OptParam1", item } });
+
+            }
 
 
 
         }
-
         public void onSyncCallback()
         {
             var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "WorkPlanTemplate").Take(100));
@@ -158,7 +146,7 @@ namespace TekTrackingCore.ViewModels
 
                 foreach (var listItems in StaticListItemsList)
                 {
-                     var item = listItems.OptParam1;
+                    var item = listItems.OptParam1;
 
                     var jsonSettings = new JsonSerializerSettings
                     {
@@ -189,5 +177,7 @@ namespace TekTrackingCore.ViewModels
             }
 
         }
+
+
     }
 }

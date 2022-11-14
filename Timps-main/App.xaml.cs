@@ -7,10 +7,10 @@ public partial class App : Application
 {
     public static LoginInfo CurrentUserDetails { get; internal set; }
     public App()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
-		MainPage = new AppShell();
-		//MainPage = new MainPage();
-	}
+        MainPage = new AppShell();
+        //MainPage = new MainPage();
+    }
 }

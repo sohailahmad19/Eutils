@@ -9,14 +9,14 @@ using TekTrackingCore.Framework.Types;
 namespace TekTrackingCore.Services
 {
 
-    public  class JSONWebService
+    public class JSONWebService
     {
-        public  HttpClient _client;
-        public  JsonSerializerOptions _serializerOptions;
+        public HttpClient _client;
+        public JsonSerializerOptions _serializerOptions;
         public IHttpsClientHandlerService _httpsClientHandlerService;
-   
 
-       public  string Token { get; set; }
+
+        public string Token { get; set; }
 
         public JSONWebService(IHttpsClientHandlerService service)
         {
@@ -67,9 +67,9 @@ namespace TekTrackingCore.Services
                 Console.WriteLine(ex.ToString());
                 return "";
             }
-            finally 
+            finally
             {
-               
+
             }
             return "";
 

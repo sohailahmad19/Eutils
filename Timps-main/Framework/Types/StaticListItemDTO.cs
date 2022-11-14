@@ -72,7 +72,7 @@ namespace TekTrackingCore.Framework.Types
         public string LocationType { get; set; }
 
         [JsonProperty("inspectionDate")]
-        public string  InspectionDate { get; set; }
+        public string InspectionDate { get; set; }
 
         [JsonProperty("inspectionStatus")]
         public object InspectionStatus { get; set; }
@@ -113,13 +113,13 @@ namespace TekTrackingCore.Framework.Types
         [JsonPropertyName("contactName")]
         public string ContactName { get; set; }
 
-       
+
 
 
 
 
         [JsonPropertyName("isvisible")]
-        public bool IsVisible { get { return _isVisible; } set {  SetProperty(ref _isVisible, value); } }
+        public bool IsVisible { get { return _isVisible; } set { SetProperty(ref _isVisible, value); } }
         private bool _isVisible;
         internal IEnumerable<object> tasks;
 
@@ -129,20 +129,20 @@ namespace TekTrackingCore.Framework.Types
 
         }
 
-         
-        
-            public event PropertyChangedEventHandler PropertyChanged;
 
-            public bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = null)
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
             {
-                if (EqualityComparer<T>.Default.Equals(field, value))
-                {
-                    return false;
-                }
-                field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-                return true;
+                return false;
             }
+            field = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            return true;
         }
     }
+}
 

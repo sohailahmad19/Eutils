@@ -16,7 +16,7 @@ namespace TekTrackingCore.ViewModels
     {
         private readonly ILoginRepository loginRepository;
 
-            public LoginViewModel() 
+        public LoginViewModel()
         {
             loginRepository = new LoginService();
         }
@@ -30,7 +30,7 @@ namespace TekTrackingCore.ViewModels
         //[RelayCommand]
         //async Task Login() 
         //{
-         
+
         //   UserInfo info = await loginRepository.Login(email, password); 
         //    if(info == null) 
         //    {
@@ -38,9 +38,9 @@ namespace TekTrackingCore.ViewModels
         //    }
         //    else 
         //    { // Route to DashBoard.
-                
+
         //    }
-        
+
         //}
 
         public bool IsLoggedIn
@@ -67,7 +67,7 @@ namespace TekTrackingCore.ViewModels
             }
         }
 
-    
+
 
         [RelayCommand]
         private async Task<Task> Login()

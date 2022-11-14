@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TekTrackingCore.Framework
 {
-   
+
 
 
     public static class ServiceResolver

@@ -31,6 +31,6 @@ namespace TekTrackingCore.Framework.Types
         {
             this.rows = rows;
         }
-       
+
     }
 }

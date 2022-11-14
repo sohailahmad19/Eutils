@@ -10,14 +10,14 @@ namespace TekTrackingCore.Framework.Types
     {
 
 
-        private String assetType  ;
-        private String assetTypeClassify ;
-        private String instructions ;
+        private String assetType;
+        private String assetTypeClassify;
+        private String instructions;
         private bool isLocation = false;
         private DefectCode defectCodes;
-        
+
         private Form form;
-        private bool  isInspectable = false;
+        private bool isInspectable = false;
         private String displayName = "";
         private bool configurationAsset;
     }

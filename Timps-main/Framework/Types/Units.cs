@@ -17,7 +17,7 @@ namespace TekTrackingCore.Framework.Types
         private String assetTypeClassify = "";
         private String joFormData; //JSON FormData
         private Dictionary<String, String> selection;
-        
+
         private AssetType assetTypeObj;
         private String start;
         private String end;
@@ -36,11 +36,11 @@ namespace TekTrackingCore.Framework.Types
         private Dictionary<String, DynForm> appFormListMap;
         private bool loadMinimum = false;
         private bool freeze = false;
-       // private UnitsGroup unitsGroup;
+        // private UnitsGroup unitsGroup;
         private bool visible = true;
-     //   private List<ATIVDefect> ativDefects;
-      //  private List<ATIVDefect> ativIssues;
-       // private List<Equipment> equipmentList;
+        //   private List<ATIVDefect> ativDefects;
+        //  private List<ATIVDefect> ativIssues;
+        // private List<Equipment> equipmentList;
         private List<Units> children;
         private List<DynForm> equipmentForms;
         private Dictionary<String, DynForm> equipmentFormsHM = new Dictionary<String, DynForm>();

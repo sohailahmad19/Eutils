@@ -42,10 +42,10 @@ namespace TekTrackingCore
                 var previousIndex = listview.DataSource.DisplayItems.IndexOf(tappedItem);
 
                 tappedItem.IsVisible = false;
-              
+
 
                 if (DeviceInfo.Platform != DevicePlatform.MacCatalyst)
-                   listview.RefreshItem(previousIndex, previousIndex, false);
+                    listview.RefreshItem(previousIndex, previousIndex, false);
             }
 
             if (tappedItem == (e.DataItem as WorkPlanDto))
@@ -53,7 +53,7 @@ namespace TekTrackingCore
                 if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)
                 {
                     var previousIndex = listview.DataSource.DisplayItems.IndexOf(tappedItem);
-                    listview.RefreshItem(previousIndex, previousIndex, false); 
+                    listview.RefreshItem(previousIndex, previousIndex, false);
                 }
 
                 tappedItem = null;
@@ -73,7 +73,7 @@ namespace TekTrackingCore
             else
             {
                 var currentIndex = listview.DataSource.DisplayItems.IndexOf(e.DataItem);
-                 listview.RefreshItem(currentIndex, currentIndex, false);
+                listview.RefreshItem(currentIndex, currentIndex, false);
             }
         }
         #endregion
