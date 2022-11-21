@@ -3,53 +3,23 @@
     x:Class="TekTrackingCore.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:TekTrackingCore.Views"
+    xmlns:views="clr-namespace:TekTrackingCore.Views"
+ FlyoutBehavior="Flyout"
+Shell.FlyoutItemIsVisible="False"
+   
    >
 
-    <!--<TabBar Shell.BackgroundColor="#191970" Shell.NavBarHasShadow="True"     Shell.TabBarBackgroundColor="#191970" Shell.TabBarTitleColor="Gray" Shell.TabBarUnselectedColor="White">
-        <ShellContent
-       Title="Dashboard"
-        ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="LoginPage" />
 
-    <ShellContent Title="Dashboard"
-                     Icon="hos.png"
-                      Route="dashboard"
-                     ContentTemplate="{DataTemplate local:MainPage}" />
-    </TabBar>-->
-
-    <ShellContent
+    <!--<ShellContent
        FlyoutItemIsVisible="False"
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
-        Route="login"/>
+        Route="login"/>-->
 
-    <FlyoutItem   Title="Briefing"  Icon="breifing.png"  >
-        <ShellContent
-            Route="Briefing" 
-            Icon="hos.png"
-            Title="Briefing"
-            ContentTemplate="{DataTemplate local:Briefing}"/>
-    </FlyoutItem>
-
-    <!--<FlyoutItem   Title="HOS"  Icon="hos.png"  >
-        <ShellContent
-            Route="Hos" 
-            Icon="hos.png"
-            Title="HOS"
-            ContentTemplate="{DataTemplate local:Hos}"/>
-    </FlyoutItem>-->
-
-    <FlyoutItem   Title="HOS"  Icon="hos.png"  >
-        <ShellContent
-            Route="SelectRun" 
-            Icon="hos.png"
-            Title="Select Run"
-            ContentTemplate="{DataTemplate local:StaticListItemPage}"/>
-    </FlyoutItem>
+    
 
 
-    <FlyoutItem   Title="List"  Icon="hos.png"  >
+    <!--<FlyoutItem   Title="List"  Icon="hos.png"  >
         <ShellContent
             Route="ExpandableView" 
             Icon="hos.png"
@@ -57,15 +27,51 @@
             ContentTemplate="{DataTemplate local:ExpandableView}"/>
     </FlyoutItem>
 
-    <!--<ShellContent Route="FormPage"
-                      IsVisible="False"
-                      ContentTemplate="{DataTemplate local:FormPage}"/>-->
-
-
-
-    <!--<FlyoutItem  Title="HOS" Icon="breifing.png">
-        <ShellContent  Route="MainPage" Title="home" ContentTemplate="{DataTemplate local:MainPage}"/>
+    <FlyoutItem   Title="Log Out">
+        <ShellContent
+            Route="login" 
+            Icon=""
+            Title="Log Out"
+            ContentTemplate="{DataTemplate local:LoginPage}"/>
     </FlyoutItem>-->
 
+    <TabBar  Shell.NavBarHasShadow="True" Route="Login"  >
+
+
+        <ShellContent Title="Login"
+             Route="LoginPage"
+              Icon="signinn"  ContentTemplate="{DataTemplate views:LoginPage}"  />
+    </TabBar>
+
+    <TabBar Route="Briefing">
+
+        <Tab Title="Briefing"
+            Icon="breifing.png"
+             Route="Briefing">
+            <ShellContent ContentTemplate="{DataTemplate views:Briefing}" />
+        </Tab>
+
+        <Tab Title="List"
+            Icon="hos.png"
+              Route="ExpandableView">
+            <ShellContent ContentTemplate="{DataTemplate views:ExpandableView}" />
+        </Tab>
+
+     
+
+       
+
+    </TabBar>
+
+    <Shell.FlyoutFooter >
+
+        <StackLayout Padding="20">
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" />
+        </StackLayout>
+
+    </Shell.FlyoutFooter>
+
+  
+   
 
 </Shell>

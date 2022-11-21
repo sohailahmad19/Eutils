@@ -18,36 +18,53 @@ using TekTrackingCore.Services;
 namespace TekTrackingCore.ViewModels
 {
     [QueryProperty("OptParam1", "OptParam1")]
-   
+    [QueryProperty("SelectedWorkPlan", "SelectedWorkPlan")]
+    [QueryProperty("UnitObj", "UnitObj")]
+
     public partial class FormPageViewModel : BaseViewModel
     {
+
+        [ObservableProperty]
+
+        private string selectedWorkPlan;
         [ObservableProperty]
     
         private string optParam1;
-        public Action<string> setRenderCallBack { get; set; }
 
-        partial void OnOptParam1Changed(string? value)
+        [ObservableProperty]
+
+        private string unitObj;
+
+        public Action<string> setSelectedWPlanCallBack { get; set; }
+        public Action<string> setRenderCallBack { get; set; }
+       
+
+      
+        partial void OnOptParam1Changed(string value)
         {
-            var result = JsonConvert.DeserializeObject<dynamic>(value);
-            var opt = result.opt1;
-            var tab = opt[0].tabName;
 
             setRenderCallBack(value);
         }
+        partial void OnSelectedWorkPlanChanged(string value)
+        {
+            if(Preferences.ContainsKey("SelectedWorkPlan"))
+            {
+                Preferences.Remove("SelectedWorkPlan");
+            }
+            Preferences.Set("SelectedWorkPlan", value);
+           
+        }
+
+        partial void OnUnitObjChanged(string value)
+        {
+            if (Preferences.ContainsKey("SelectedUnit"))
+            {
+                Preferences.Remove("SelectedUnit");
+            }
+            Preferences.Set("SelectedUnit", value);
+         }
 
 
     }
 
-
-        //[RelayCommand]
-        //public async void Click()
-        //{
-        //    var result = JsonConvert.DeserializeObject<dynamic>(optParam1);
-        //    var opt = result.opt1;
-        //    var tab = opt[0].tabName;
-
-
-        //}
-
-    
 }

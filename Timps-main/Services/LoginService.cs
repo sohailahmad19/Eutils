@@ -11,6 +11,7 @@ using TekTrackingCore.Models;
 using Newtonsoft.Json;
 using TekTrackingCore.Model;
 using TekTrackingCore.Views;
+using CommunityToolkit.Mvvm.Input;
 
 namespace TekTrackingCore.Services
 {
@@ -24,6 +25,7 @@ namespace TekTrackingCore.Services
             public LoginRequest()
             {
                 this.user = new User();
+
             }
         }
 
@@ -78,6 +80,8 @@ namespace TekTrackingCore.Services
 
                     App.CurrentUserDetails = userinfolist;
 
+                    await Shell.Current.GoToAsync("ProceedPage");
+                    // await Shell.Current.GoToAsync($"//{nameof(ProceedPage)}");
                     return await Task.FromResult(userinfo);
 
 
@@ -104,7 +108,7 @@ namespace TekTrackingCore.Services
         {
 
             System.Diagnostics.Debug.WriteLine(Preferences.ContainsKey(typeof(LoginInfo).ToString()));
-            return !Preferences.ContainsKey(typeof(LoginInfo).ToString());
+            return Preferences.ContainsKey(typeof(LoginInfo).ToString());
 
         }
 
@@ -135,7 +139,9 @@ namespace TekTrackingCore.Services
 
             }
 
-
+            bool isLoggedIn = IsAlreadyLoggedIn();
+            //await Shell.Current.GoToAsync("LogIn");
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
 
             //await Shell.Current.GoToAsync("///login");
             return await Task.FromResult(userInfo);
@@ -145,6 +151,7 @@ namespace TekTrackingCore.Services
         async public Task Proceed()
         {
             //await Shell.Current.GoToAsync("/dashboard");
+           // await Shell.Current.GoToAsync("ProceedPage");
             await Shell.Current.GoToAsync($"//{nameof(Briefing)}");
         }
 

@@ -17,17 +17,17 @@
             <!--<Image Source="logoone.png" Margin="0,0,0,0 " WidthRequest="120" />
         <Image Source="logotwo.png" Margin="0,-15,0,0 " WidthRequest="120"/>-->
 
-            <Image Source="teklogo.png"  WidthRequest="250"/>
+            <!--<Image Source="teklogo.png"  WidthRequest="250"/>-->
             <VerticalStackLayout Spacing="5">
                 <Label Text="Welcome" FontSize="28" TextColor="Black" HorizontalTextAlignment="Center"/>
-                <Label FontFamily="Poppins" Text="Track Inspection ,Maintenance and Planning Sysytem " FontSize="22" TextColor="Black" HorizontalTextAlignment="Center"/>
+                <Label FontFamily="Poppins" Text="Electric Inspection ,Maintenance and Planning Sysytem " FontSize="22" TextColor="Black" HorizontalTextAlignment="Center"/>
             </VerticalStackLayout>
 
 
 
 
-            <StackLayout Orientation="Horizontal"  IsVisible="{Binding IsLoggedIn}">
-                <Frame ZIndex="1" BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
+            <StackLayout Orientation="Horizontal" >
+                <Frame  BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
                     <Image Source="envelopesimple.png" HeightRequest="30" WidthRequest="30"/>
                 </Frame>
 
@@ -36,20 +36,20 @@
                 </Frame>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" IsVisible="{Binding IsLoggedIn}">
-                <Frame ZIndex="1" BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
+            <StackLayout Orientation="Horizontal">
+                <Frame  BorderColor="White" HasShadow="True" HeightRequest="46" WidthRequest="46" CornerRadius="26">
                     <Image Source="lockkey.png" HeightRequest="30" WidthRequest="30" />
                 </Frame>
 
 
                 <Frame Padding="0" Margin="20,0,0,0" HasShadow="True" HeightRequest="45" CornerRadius="20" BorderColor="Black" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password" Keyboard="Email" TextColor="Black" FontSize="Large" IsPassword="True" Text="{Binding Password}"/>
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password"  TextColor="Black" FontSize="Large" IsPassword="true" Text="{Binding Password}"/>
                 </Frame>
             </StackLayout>
 
 
             <StackLayout HorizontalOptions="Fill">
-                <Button Text="{Binding BtnTextString}"   Command="{Binding LoginCommand}"  BackgroundColor="#191970" FontSize="Large" TextColor="White"  CornerRadius="0" />
+                <Button Text="Login"   Command="{Binding LoginCommand}"  BackgroundColor="#191970" FontSize="Large" TextColor="White"  CornerRadius="0" />
             </StackLayout>
 
 
@@ -58,12 +58,6 @@
         </StackLayout>-->
 
            
-                <StackLayout HorizontalOptions="Fill" IsVisible="{Binding IsLoggedOut}"  Margin="0,0,0,5">
-                <Button BackgroundColor="#191970" TextColor="White" Text="Proceed" Command="{Binding ProceedCommand}" FontSize="Large"   CornerRadius="0" Margin="5,0,5,0"/>
-                </StackLayout>
-                <!--<Button BackgroundColor="#191970" TextColor="White" Text="Log Out"  HeightRequest="40"  WidthRequest="150" CornerRadius="0"  Margin="5,0,5,0"/>-->
-     
-            
             <FlexLayout JustifyContent="Center" AlignItems="Center" Margin="0,5,0,5" >
 
                 <Button BackgroundColor="#191970" TextColor="White" Text="Settings" WidthRequest="150"  HeightRequest="40" CornerRadius="0" Margin="5,0,5,0"/>

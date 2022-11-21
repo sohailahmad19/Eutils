@@ -18,6 +18,7 @@ using TekTrackingCore.Framework.Types;
 using TekTrackingCore.Repositry;
 using TekTrackingCore.Sample.Models;
 using TekTrackingCore.Services;
+
 using Unit = TekTrackingCore.Sample.Models.Unit;
 
 namespace TekTrackingCore.ViewModels
@@ -82,14 +83,24 @@ namespace TekTrackingCore.ViewModels
             if (unit != null)
             {
                 string testCode = unit.TestForm[0].TestCode.ToString();
-                // var filterdlist = (service.staticListItemDTOs.Where(p => p.ListName == "ApplicationLookups").Take(100));
-                // Console.WriteLine(filterdlist.ToString(), "filteredlist");
-                OnSyncCallback1(testCode);
+                var selectedWorkPlan = workPlanList.Where(p => p.Id == unit.WPlanId);
+
+                var jsonSettings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                };
+
+                string result = JsonConvert.SerializeObject(selectedWorkPlan, jsonSettings);
+                string unitObj = JsonConvert.SerializeObject(unit, jsonSettings);
+                System.Diagnostics.Debug.WriteLine(result);
+                //Console.WriteLine(filterdlist.ToString(), "filteredlist");
+              OnSyncCallback1(testCode, result, unitObj);
 
             }
         }
 
-        public async void OnSyncCallback1(string code)
+        public async void OnSyncCallback1(string code, string selectedWorkPlan, string unitObj)
         {
             var filterdlist = (service.staticListItemDTOs.Where(p => p.Code == code).Take(100));
             Console.WriteLine(filterdlist.ToString(), "filteredlist");
@@ -110,7 +121,7 @@ namespace TekTrackingCore.ViewModels
             foreach (var listItems in StaticListItemsList1)
             {
                 var item = listItems.OptParam1;
-                await Shell.Current.GoToAsync($"{nameof(FormPage)}", true, new Dictionary<string, object> { { "OptParam1", item } });
+                await Shell.Current.GoToAsync($"{nameof(FormPage)}", true, new Dictionary<string, object> { { "OptParam1", item }, { "SelectedWorkPlan", selectedWorkPlan }, { "UnitObj", unitObj } });
 
             }
 

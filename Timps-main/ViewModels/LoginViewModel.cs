@@ -19,6 +19,11 @@ namespace TekTrackingCore.ViewModels
         public LoginViewModel()
         {
             loginRepository = new LoginService();
+            bool flag = loginRepository.IsAlreadyLoggedIn();
+            if(flag == true)
+            {
+                loginRepository.Proceed();
+            }
         }
 
         [ObservableProperty]
@@ -73,17 +78,17 @@ namespace TekTrackingCore.ViewModels
         private async Task<Task> Login()
         {
 
-            if (!IsLoggedIn)
-            {
+            //if (!IsLoggedIn)
+            //{
 
-                return loginRepository.Logout();
+            //    return loginRepository.Logout();
 
-            }
+            //}
 
-            else
-            {
+            //else
+            //{
                 return loginRepository.Login(email, password);
-            }
+            //}
 
         }
 

@@ -389,6 +389,8 @@ namespace TekTrackingCore.Sample.Models
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        [JsonProperty("wPlanId")]
+        public string WPlanId { get; set; }
 
     }
 

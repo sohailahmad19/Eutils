@@ -2,29 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TekTrackingCore.Views.Briefing"
+             xmlns:viewmodel="clr-namespace:TekTrackingCore.ViewModels"
+             x:DataType="viewmodel:BriefingViewModel"
              Title="Briefing">
     <VerticalStackLayout>
-    
-              <Frame 
-                     BackgroundColor="LightSkyBlue"
-                  CornerRadius="0"
-                  
-              Padding=" 20, 10">
+
+        <Frame  BackgroundColor="LightSkyBlue" CornerRadius="0" Padding=" 20, 10">
             <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                 <Image WidthRequest="30" Source="currlocation.png"/>
                 <Label Text="Live location"
-                      FontSize="22" />
+                      FontSize="22" FontFamily="sans-serif" FontAttributes="Bold"/>
             </HorizontalStackLayout>
-            </Frame>
+        </Frame>
 
         <Frame   
-                  CornerRadius="0"   
+              CornerRadius="0"   
               Padding=" 20, 10">
-            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
-                <Image WidthRequest="30" Source="location.png"/>
-                <Label Margin="0,5,0,0" Text="4,Block J Gulberg III,Lahore ,Punjab, Pakistan"
+            <ScrollView Orientation="Horizontal">
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                    <Image WidthRequest="30" Source="location.png"/>
+                    <Label Margin="0,5,0,0" Text="{Binding LocationInfo}"
                       FontSize="14" />
-            </HorizontalStackLayout>
+
+                    <Label Margin="0,5,0,0" Text="{Binding Latitude}"
+                      FontSize="14" />
+                    <Label Margin="0,5,0,0" Text="{Binding Longitude}"
+                      FontSize="14" />
+                </HorizontalStackLayout>
+            </ScrollView>
         </Frame>
 
         <Frame
@@ -35,15 +40,15 @@
             <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
                 <Image WidthRequest="30" Source="inspection.png"/>
                 <Label  Text="Inspection Status"
-                      FontSize="22" />
+                      FontSize="22" FontAttributes="Bold"/>
             </HorizontalStackLayout>
         </Frame>
         <StackLayout BackgroundColor="#D3D3D3" HeightRequest="75"   Margin="0 ,15,0,0">
             <FlexLayout Padding="50 ,0"  JustifyContent="Center" AlignItems="Start"    >
- 
-            <Image  Source="search.png" WidthRequest="30"/>
-            <Label Margin="3,0,0,0"  FontSize="22"  Text="Inspection"/>
-        </FlexLayout>
+
+                <Image  Source="search.png" WidthRequest="30"/>
+                <Label Margin="3,0,0,0"  FontSize="22"  Text="Inspections" FontAttributes="Bold"/>
+            </FlexLayout>
             <Label TextDecorations="Underline" TextColor="BlueViolet" HorizontalOptions="Center" Text="No active inspection" Margin="4,5,0,0"/>
         </StackLayout>
 
@@ -54,7 +59,7 @@
                 <FlexLayout Direction="Column" AlignItems="Center">
                     <HorizontalStackLayout >
                         <Image  WidthRequest="33" Source="inspection.png"/>
-                        <Label FontAttributes="Bold" Text="Sessions" Margin="0,5,0,0"/>
+                        <Label  Text="Sessions" Margin="0,5,0,0" FontAttributes="Bold"/>
                     </HorizontalStackLayout>
                     <Label  Text="{Binding Reported}"
                       FontSize="22"  />
@@ -64,7 +69,7 @@
                 <FlexLayout Direction="Column" AlignItems="Center">
                     <HorizontalStackLayout Spacing="5" >
                         <Image  WidthRequest="30" Source="report.png"/>
-                        <Label FontAttributes="Bold" Text="Reported" Margin="0,5,0,0"/>
+                        <Label Text="Reported" Margin="0,5,0,0" FontAttributes="Bold"/>
                     </HorizontalStackLayout>
                     <Label  Text="{Binding Session}"
                       FontSize="22"  />
@@ -75,8 +80,8 @@
         <StackLayout BackgroundColor="#D3D3D3" HeightRequest="75"   Margin="0 ,15,0,0">
             <FlexLayout Padding="50 ,0"  JustifyContent="Center" AlignItems="Start"    >
 
-              
-                <Label Margin="3,0,0,0"  FontSize="22"  Text="Time recorded"/>
+
+                <Label Margin="3,0,0,0"  FontSize="22"  Text="Time recorded" FontAttributes="Bold"/>
             </FlexLayout>
             <Label   HorizontalOptions="Center" Text="{Binding Times}" Margin="4,5,0,0"/>
         </StackLayout>

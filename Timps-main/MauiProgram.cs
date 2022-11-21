@@ -36,6 +36,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<LoginViewModel>();
         builder.Services.AddSingleton<LoginPage>();
 
+        builder.Services.AddSingleton<ProceedPage>();
+
         builder.Services.AddSingleton<MianPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<BriefingViewModel>();
@@ -48,7 +50,7 @@ public static class MauiProgram
 
         builder.Services.AddSingleton<JSONWebService>();
         builder.Services.AddSingleton<DatabaseSyncService>();
-
+        builder.Services.AddSingleton<InspectionService>();
         //builder.Services.AddSingleton<AccordionViewModel>();
         builder.Services.AddSingleton<ExpandableView>();
 
