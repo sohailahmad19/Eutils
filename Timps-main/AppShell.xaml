@@ -6,7 +6,7 @@
     xmlns:views="clr-namespace:TekTrackingCore.Views"
  FlyoutBehavior="Flyout"
 Shell.FlyoutItemIsVisible="False"
-   
+
    >
 
 
@@ -15,9 +15,6 @@ Shell.FlyoutItemIsVisible="False"
         Title="Login"
         ContentTemplate="{DataTemplate local:LoginPage}"
         Route="login"/>-->
-
-    
-
 
     <!--<FlyoutItem   Title="List"  Icon="hos.png"  >
         <ShellContent
@@ -57,21 +54,20 @@ Shell.FlyoutItemIsVisible="False"
             <ShellContent ContentTemplate="{DataTemplate views:ExpandableView}" />
         </Tab>
 
-     
-
-       
+        <Tab Title="HOS"
+            Icon="hos.png"
+              Route="Hos">
+            <ShellContent ContentTemplate="{DataTemplate views:Hos}" />
+        </Tab>
 
     </TabBar>
 
     <Shell.FlyoutFooter >
 
         <StackLayout Padding="20">
-            <Button Text="Sign Out" Command="{Binding SignOutCommand}" />
+            <Button Text="Sign Out" Command="{Binding SignOutCommand}" BackgroundColor="#191970" CornerRadius="0"/>
         </StackLayout>
 
     </Shell.FlyoutFooter>
-
-  
-   
 
 </Shell>

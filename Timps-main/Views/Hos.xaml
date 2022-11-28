@@ -23,7 +23,7 @@
     <VerticalStackLayout>
 
 
-        <Frame BackgroundColor="#00B5E2"
+        <Frame BackgroundColor="#D3D3D3"
                    CornerRadius="0"
                    HeightRequest="60"
                    Padding=" 10, 10"
@@ -54,7 +54,7 @@
         <FlexLayout
             Margin="0 ,10,0,0"
                >
-            <Frame   HeightRequest="100"  CornerRadius="0"   BackgroundColor="LightSkyBlue" Margin="3,0,3,0">
+            <Frame   HeightRequest="100"  CornerRadius="0"   BackgroundColor="#D3D3D3" Margin="3,0,3,0">
                 <FlexLayout Direction="Column" AlignItems="Center">
                     <HorizontalStackLayout >
                         <Image Margin="0,3,0,0"  WidthRequest="25" Source="signin.png"/>
@@ -66,7 +66,7 @@
                       FontSize="24"  />
                 </FlexLayout>
             </Frame>
-            <Frame    HeightRequest="100"  CornerRadius="0"   BackgroundColor="LightSkyBlue" Margin="3,0,3,0" >
+            <Frame    HeightRequest="100"  CornerRadius="0"   BackgroundColor="#D3D3D3" Margin="3,0,3,0" >
                 <FlexLayout Direction="Column" AlignItems="Center">
                     <HorizontalStackLayout Spacing="5" >
                         <Image Margin="0,3,0,0"  WidthRequest="25" Source="signout.png"/>
@@ -80,7 +80,7 @@
         </FlexLayout>
 
 
-        <Frame Margin="0,10,0,0" BackgroundColor="#00B5E2"
+        <Frame Margin="0,10,0,0" BackgroundColor="#D3D3D3"
                    CornerRadius="0"
                    HeightRequest="60"
                    Padding=" 10, 10"
@@ -107,24 +107,28 @@
             <Label Text="00:00"/>
 
         </FlexLayout>
-        <StackLayout >
+        <StackLayout Margin="0,20,0,0" >
         <Border HeightRequest="60" WidthRequest="400" Stroke="black"
         StrokeThickness="1"
         Background="white"
  
        >
-                <FlexLayout AlignItems="Center" JustifyContent="SpaceAround" >
+                <StackLayout Padding="10,0,10,0" >
+                    <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween" HeightRequest="57" >
+           
 
                     <StackLayout>
                     <Label Text="Time" FontAttributes="Bold"  />
                     <TimePicker  Time="4:15:26"/>
+                  
                     </StackLayout>
 
+                    <Button Text="SIGN IN" BackgroundColor="#D3D3D3"  CornerRadius="2" FontAttributes="Bold" TextColor="Black" />
+                 
 
-
-                    <Button Text="SIGN IN" BackgroundColor="#D3D3D3"  CornerRadius="5" FontAttributes="Bold" TextColor="Black" />
                 </FlexLayout>
-               
+                </StackLayout>
+
             </Border>
         </StackLayout>
 

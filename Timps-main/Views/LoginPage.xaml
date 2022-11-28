@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://maui.com/schemas/2022/toolkit"
+             xmlns:xts="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             
              x:Class="TekTrackingCore.Views.LoginPage"
               BackgroundColor="Grey"
              >
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="InvalidStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="#ff3333" />
+                <Setter Property="FontSize" Value="22" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ScrollView>
         <VerticalStackLayout
         x:Name="vLayout"
-        Spacing="30"
+        Spacing="15"
         Padding="10, 0"
         Margin="0 ,30,0,0"
         
@@ -32,8 +45,21 @@
                 </Frame>
 
                 <Frame Padding="0" Margin="20,0,0,0" HasShadow="True" HeightRequest="45" CornerRadius="20" BorderColor="Black" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email" TextColor="Black" FontSize="Large" Text="{Binding Email}" />
+                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Email" Keyboard="Email"  FontSize="Large" Text="{Binding Email}" >
+                        <Entry.Behaviors>
+                            <xts:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}" x:Name="MultiValidationEmail">
+                                <xts:EmailValidationBehavior  xts:MultiValidationBehavior.Error="Invalid Email" RegexPattern="" />
+                                <xts:EmailValidationBehavior  xts:MultiValidationBehavior.Error="Invalid Password" RegexPattern="" />
+                                
+                            </xts:MultiValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
                 </Frame>
+            </StackLayout>
+            <StackLayout HeightRequest="8">
+                <Label
+           
+            Text="{Binding Errors[0], Source={x:Reference MultiValidationEmail}}" TextColor="#FF0000" FontSize="14" HorizontalTextAlignment="Center"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
@@ -43,14 +69,31 @@
 
 
                 <Frame Padding="0" Margin="20,0,0,0" HasShadow="True" HeightRequest="45" CornerRadius="20" BorderColor="Black" HorizontalOptions="FillAndExpand">
-                    <Entry Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password"  TextColor="Black" FontSize="Large" IsPassword="true" Text="{Binding Password}"/>
+                    <Entry  Margin="20,0,0,0" VerticalOptions="Center" Placeholder="Password"   FontSize="Large" IsPassword="true" Text="{Binding Password}">
+                        <Entry.Behaviors >
+                            <xts:MultiValidationBehavior InvalidStyle="{StaticResource InvalidStyle}" x:Name="MultiValidation">
+                                
+                                <xts:CharactersValidationBehavior x:Name="any" CharacterType="Any" MinimumCharacterTypeCount="6" xts:MultiValidationBehavior.Error="Invalid Password" RegexPattern="" />
+                            </xts:MultiValidationBehavior>
+                        </Entry.Behaviors>
+                    </Entry>
+                    
                 </Frame>
+           
             </StackLayout>
+            <!--<StackLayout>
+                <Label
+           
+            Text="{Binding Errors[0], Source={x:Reference MultiValidation}}" TextColor="#ff3333" FontSize="20" HorizontalTextAlignment="Center"/>
+            </StackLayout>-->
 
 
             <StackLayout HorizontalOptions="Fill">
                 <Button Text="Login"   Command="{Binding LoginCommand}"  BackgroundColor="#191970" FontSize="Large" TextColor="White"  CornerRadius="0" />
             </StackLayout>
+            
+            <ActivityIndicator x:Name="loadingSpinner"/>
+
 
 
             <!--<StackLayout Orientation="Horizontal">
@@ -65,8 +108,7 @@
             </FlexLayout>
 
 
-
-
+            <!--<Label x:Name="status" Text="hello" />-->
             <Image Source="eutility.png"  WidthRequest="250" Margin="0,20,0,0"/>
 
 

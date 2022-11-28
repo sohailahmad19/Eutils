@@ -25,6 +25,7 @@ namespace TekTrackingCore.Services
             public LoginRequest()
             {
                 this.user = new User();
+              
 
             }
         }
@@ -33,18 +34,24 @@ namespace TekTrackingCore.Services
         {
             public string email { get; set; }
             public string password { get; set; }
+            
         }
+       
 
+        public async Task<UserInfo> Login(string username, string password, Action<bool> showLoading,Action<string,bool> emailStatus)
 
-        public async Task<UserInfo> Login(string username, string password)
         {
+
+           
             UserInfo userinfo;
             try
             {
-                userinfo = new UserInfo();
+                showLoading(true);
+                IsLoadingLogin(true);
+                  userinfo = new UserInfo();
                 var httpclient = new HttpClient();
                 //string url = Globals.wsBaseURL + "/login/";
-                string url = "http://172.19.91.167:4040/api/login/";
+                string url = "https://electric-utility-inspection-system.onrender.com/api/login/";
 
                 //string userloginjson = @"{ ""user"":{ ""email"":""medmonds@tektracking.com"",""password"":""welcome""}}";
                 LoginRequest request = new LoginRequest();
@@ -55,11 +62,21 @@ namespace TekTrackingCore.Services
                 StringContent content = new StringContent(testuser, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await httpclient.PostAsync(new Uri(url), content);
-
+              
                 if (response.IsSuccessStatusCode)
                 {
+                   
+
+
+                    Console.WriteLine(response.StatusCode + "response status");
+                    Console.WriteLine(response.IsSuccessStatusCode + "response status");
+                    showLoading(false);
+
+                    IsLoadingLogin(false);
+
+
                     string serialized = await response.Content.ReadAsStringAsync();
-                    System.Diagnostics.Debug.WriteLine(serialized, "serialized.............................................................");
+                    System.Diagnostics.Debug.WriteLine(serialized, "serialized.........");
                     //Console.WriteLine(serialized, "serialized");
 
                     var userinfolist = LoginInfo.FromJson(serialized);
@@ -81,14 +98,14 @@ namespace TekTrackingCore.Services
                     App.CurrentUserDetails = userinfolist;
 
                     await Shell.Current.GoToAsync("ProceedPage");
-                    // await Shell.Current.GoToAsync($"//{nameof(ProceedPage)}");
+                    //await Shell.Current.GoToAsync($"//{nameof(ProceedPage)}");
                     return await Task.FromResult(userinfo);
 
 
                 }
                 else
                 {
-
+                    emailStatus(response.StatusCode.ToString(),true);
                     return null;
                 }
             }
@@ -109,6 +126,12 @@ namespace TekTrackingCore.Services
 
             System.Diagnostics.Debug.WriteLine(Preferences.ContainsKey(typeof(LoginInfo).ToString()));
             return Preferences.ContainsKey(typeof(LoginInfo).ToString());
+
+        }
+
+        public bool IsLoadingLogin(bool status)
+        {
+            return status; 
 
         }
 
@@ -136,7 +159,7 @@ namespace TekTrackingCore.Services
             if (Preferences.ContainsKey(typeof(LoginInfo).ToString()))
             {
                 Preferences.Remove(typeof(LoginInfo).ToString());
-
+              
             }
 
             bool isLoggedIn = IsAlreadyLoggedIn();

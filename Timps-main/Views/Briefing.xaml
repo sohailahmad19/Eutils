@@ -79,8 +79,6 @@
 
         <StackLayout BackgroundColor="#D3D3D3" HeightRequest="75"   Margin="0 ,15,0,0">
             <FlexLayout Padding="50 ,0"  JustifyContent="Center" AlignItems="Start"    >
-
-
                 <Label Margin="3,0,0,0"  FontSize="22"  Text="Time recorded" FontAttributes="Bold"/>
             </FlexLayout>
             <Label   HorizontalOptions="Center" Text="{Binding Times}" Margin="4,5,0,0"/>

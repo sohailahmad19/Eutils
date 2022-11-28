@@ -26,6 +26,9 @@ namespace TekTrackingCore.ViewModels
                 
             }
 
+            Preferences.Default.Clear();
+
+
             await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             Shell.Current.FlyoutIsPresented = false;
 

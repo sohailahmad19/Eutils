@@ -38,17 +38,17 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android31.0|AnyCPU'">
+		<AndroidPackageFormat>aab</AndroidPackageFormat>
 		<AndroidUseAapt2>True</AndroidUseAapt2>
 		<AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-		<DebugSymbols>False</DebugSymbols>
-		<EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-		<AndroidPackageFormat>apk</AndroidPackageFormat>
+		<DebugSymbols>True</DebugSymbols>
+		<EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android31.0|AnyCPU'">
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-	  <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+	  <AndroidPackageFormat>aab</AndroidPackageFormat>
 	</PropertyGroup>
 
 	<!-- <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android31.0|AnyCPU'">
@@ -86,13 +86,13 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.2.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.0" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="6.0.10" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Plugin.ValidationRules" Version="1.5.0.1" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.3.58" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="20.3.58" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.3.52" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="20.3.52" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="20.3.52" />
 		<PackageReference Include="Syncfusion.Maui.Inputs" Version="20.3.52" />
 		<PackageReference Include="Syncfusion.Maui.ListView" Version="20.3.52" />

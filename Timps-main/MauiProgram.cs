@@ -7,6 +7,7 @@ using TekTrackingCore.Sample.Helpers;
 using Syncfusion.Maui.ListView.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using CommunityToolkit.Maui.Markup;
+using CommunityToolkit.Maui;
 
 namespace TekTrackingCore;
 
@@ -21,6 +22,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
             .ConfigureSyncfusionCore()
              .UseMauiCommunityToolkitMarkup()
             .ConfigureFonts(fonts =>
@@ -46,6 +48,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<StaticListItemViewModel>();
         builder.Services.AddSingleton<FormPageViewModel>();
         builder.Services.AddSingleton<FormPage>();
+        builder.Services.AddSingleton<Hos>();
         //builder.Services.AddSingleton<StaticListItemPage>();
 
         builder.Services.AddSingleton<JSONWebService>();
@@ -67,7 +70,7 @@ public static class MauiProgram
         MauiApp app = builder.Build();
         app.Services.UseResolver();
 
-
+        //DeviceDisplay.KeepScreenOn = true;
 
         return app;
     }

@@ -9,6 +9,11 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
+        Application.Current.UserAppTheme = AppTheme.Light;
+        //DeviceDisplay.KeepScreenOn = true;
+       
+
+
 
         MainPage = new AppShell();
         //MainPage = new MainPage();
